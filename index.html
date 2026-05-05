@@ -4,23 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Annelina Arcia V. | Arquitectura con intención</title>
-
-  <meta name="description" content="Annelina Arcia V. Arquitecta especializada en desarrollo de proyectos, diseño arquitectónico, dibujo técnico, AutoCAD, Revit y documentación ejecutiva." />
+  <title>Annelina Arcia V. | A4 Panamá Arquitectura</title>
+  <meta name="description" content="A4 Panamá Arquitectura. Annelina Arcia V., arquitecta especializada en diseño con intención, desarrollo de proyectos, planos técnicos, AutoCAD y Revit." />
 
   <style>
     :root {
-      --black: #0d0d0b;
-      --ink: #1b1b18;
-      --cream: #f3eee6;
-      --paper: #fbfaf6;
-      --stone: #d8d0c3;
-      --sage: #8fa79b;
-      --olive: #53695f;
-      --gold: #b69c73;
-      --gray: #77736c;
+      --cream: #f4f1eb;
       --white: #ffffff;
-      --shadow: rgba(0, 0, 0, 0.12);
+      --ink: #1d241f;
+      --muted: #7c887f;
+      --sage: #6f897d;
+      --sage-light: #a9b8ae;
+      --stone: #d8d4cb;
+      --paper: #fbfaf7;
+      --gold: #b79a6f;
+      --black: #0e100f;
+      --shadow: rgba(0,0,0,.14);
     }
 
     * {
@@ -34,9 +33,9 @@
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
       background: var(--cream);
       color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
       overflow-x: hidden;
     }
 
@@ -51,609 +50,9 @@
       text-decoration: none;
     }
 
-    button {
-      font-family: inherit;
-    }
-
     ::selection {
-      background: var(--black);
-      color: var(--cream);
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.9s ease, transform 0.9s ease;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 999;
-      background: rgba(243, 238, 230, 0.78);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-    }
-
-    nav {
-      max-width: 1320px;
-      margin: auto;
-      padding: 16px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 13px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
-    .brand img {
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      object-fit: contain;
-      background: white;
-      padding: 3px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 30px;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .nav-links a {
-      position: relative;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 0%;
-      height: 1px;
-      background: var(--black);
-      transition: 0.3s ease;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .lang-btn {
-      border: 1px solid var(--black);
-      background: transparent;
-      padding: 9px 13px;
-      cursor: pointer;
-      font-size: 12px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      transition: 0.3s ease;
-    }
-
-    .lang-btn:hover {
-      background: var(--black);
-      color: var(--cream);
-    }
-
-    .hero {
-      min-height: 100vh;
-      max-width: 1320px;
-      margin: auto;
-      padding: 130px 24px 70px;
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 52px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      font-size: 12px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--olive);
-      margin-bottom: 20px;
-      font-weight: 700;
-    }
-
-    .hero h1 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(58px, 8vw, 118px);
-      line-height: 0.86;
-      letter-spacing: -5px;
-      font-weight: 400;
-      max-width: 760px;
-    }
-
-    .hero-copy {
-      max-width: 610px;
-      font-size: 21px;
-      line-height: 1.55;
-      margin-top: 30px;
-      color: #353530;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 36px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      padding: 15px 22px;
-      border: 1px solid var(--black);
-      text-transform: uppercase;
-      letter-spacing: 1.6px;
-      font-size: 12px;
-      font-weight: 800;
-      transition: 0.35s ease;
-    }
-
-    .btn.dark {
-      background: var(--black);
-      color: var(--cream);
-    }
-
-    .btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 34px rgba(0,0,0,0.14);
-    }
-
-    .hero-visual {
-      position: relative;
-      height: 720px;
-      overflow: hidden;
-      background: var(--stone);
-      box-shadow: 0 25px 80px rgba(0,0,0,0.15);
-      isolation: isolate;
-    }
-
-    .hero-visual img {
-      height: 100%;
-      filter: grayscale(8%) contrast(1.04);
-      transform: scale(1.02);
-      animation: heroZoom 8s ease forwards;
-    }
-
-    .hero-visual::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.38), transparent 45%);
-      z-index: 1;
-    }
-
-    .hero-badge {
-      position: absolute;
-      left: 26px;
-      bottom: 26px;
-      z-index: 2;
-      color: white;
-      text-transform: uppercase;
-      letter-spacing: 8px;
-      font-size: 34px;
-      font-weight: 300;
-    }
-
-    .hero-card {
-      position: absolute;
-      right: 26px;
-      top: 26px;
-      z-index: 2;
-      width: 190px;
-      background: rgba(255,255,255,0.84);
-      backdrop-filter: blur(10px);
-      padding: 18px;
-      font-size: 12px;
-      line-height: 1.4;
-      text-transform: uppercase;
-      letter-spacing: 1.4px;
-    }
-
-    @keyframes heroZoom {
-      from { transform: scale(1.08); }
-      to { transform: scale(1.02); }
-    }
-
-    .marquee {
-      overflow: hidden;
-      border-block: 1px solid rgba(0,0,0,0.09);
-      background: var(--black);
-      color: var(--cream);
-      padding: 18px 0;
-    }
-
-    .marquee-track {
-      display: flex;
-      width: max-content;
-      animation: marquee 24s linear infinite;
-    }
-
-    .marquee span {
-      margin-right: 48px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 28px;
-      white-space: nowrap;
-      color: var(--cream);
-      opacity: 0.95;
-    }
-
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    section {
-      max-width: 1320px;
-      margin: auto;
-      padding: 110px 24px;
-    }
-
-    .section-title {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(44px, 6vw, 88px);
-      line-height: 0.92;
-      letter-spacing: -4px;
-      font-weight: 400;
-      margin-bottom: 30px;
-    }
-
-    .section-copy {
-      max-width: 780px;
-      font-size: 20px;
-      line-height: 1.65;
-      color: #3c3b36;
-    }
-
-    .profile {
-      display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
-      gap: 70px;
-      align-items: center;
-    }
-
-    .profile-img {
-      background: var(--paper);
-      padding: 16px;
-      transform: rotate(-1.2deg);
-      box-shadow: 0 25px 70px rgba(0,0,0,0.12);
-    }
-
-    .profile-img img {
-      height: 540px;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      margin-top: 38px;
-      gap: 16px;
-    }
-
-    .stat {
-      border-top: 1px solid rgba(0,0,0,0.25);
-      padding-top: 16px;
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 34px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-weight: 400;
-    }
-
-    .stat span {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1.6px;
-      color: var(--gray);
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 30px;
-    }
-
-    .tag {
-      padding: 10px 13px;
-      background: var(--paper);
-      border: 1px solid rgba(0,0,0,0.14);
-      font-size: 12px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .story-header {
-      max-width: 980px;
-      margin-bottom: 70px;
-    }
-
-    .story-grid {
-      display: grid;
-      gap: 90px;
-    }
-
-    .story-item {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 42px;
-      align-items: center;
-    }
-
-    .story-item:nth-child(even) .note {
-      order: 2;
-    }
-
-    .story-media {
-      height: 560px;
-      overflow: hidden;
-      position: relative;
-      box-shadow: 0 22px 60px rgba(0,0,0,0.12);
-    }
-
-    .story-media img {
-      height: 100%;
-      filter: grayscale(100%) contrast(1.05);
-      transition: transform 1s ease, filter 0.7s ease;
-    }
-
-    .story-media:hover img {
-      transform: scale(1.05);
-      filter: grayscale(35%) contrast(1.04);
-    }
-
-    .note {
-      background: var(--paper);
-      padding: clamp(34px, 5vw, 58px);
-      box-shadow: 0 24px 80px rgba(0,0,0,0.12);
-      position: relative;
-      transform: rotate(-1deg);
-    }
-
-    .note::before {
-      content: "";
-      position: absolute;
-      width: 92px;
-      height: 30px;
-      top: -15px;
-      left: 34px;
-      background: rgba(188, 154, 105, 0.48);
-      transform: rotate(-6deg);
-    }
-
-    .note small {
-      display: block;
-      text-transform: uppercase;
-      letter-spacing: 2.5px;
-      color: var(--gray);
-      margin-bottom: 18px;
-      font-weight: 700;
-    }
-
-    .note h3 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(38px, 5vw, 68px);
-      line-height: 0.92;
-      font-weight: 400;
-      letter-spacing: -2px;
-      margin-bottom: 24px;
-    }
-
-    .note p,
-    .note li {
-      font-size: 21px;
-      line-height: 1.55;
-      color: #33322e;
-    }
-
-    .note ul {
-      padding-left: 22px;
-    }
-
-    .note strong {
-      display: block;
-      font-size: 25px;
-      margin-top: 24px;
-      color: var(--black);
-    }
-
-    .portfolio {
-      max-width: none;
-      background: var(--black);
-      color: var(--cream);
-      padding: 120px 24px;
-    }
-
-    .portfolio-inner {
-      max-width: 1320px;
-      margin: auto;
-    }
-
-    .portfolio .eyebrow {
-      color: var(--gold);
-    }
-
-    .portfolio .section-copy {
-      color: #d8d1c6;
-    }
-
-    .case-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-      margin-top: 55px;
-    }
-
-    .case-card {
-      background: #181816;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.09);
-      transition: 0.45s ease;
-    }
-
-    .case-card:hover {
-      transform: translateY(-10px);
-      border-color: rgba(255,255,255,0.28);
-    }
-
-    .case-image {
-      height: 300px;
-      overflow: hidden;
-    }
-
-    .case-image img {
-      height: 100%;
-      filter: grayscale(20%) contrast(1.03);
-      transition: 0.7s ease;
-    }
-
-    .case-card:hover img {
-      transform: scale(1.06);
-      filter: grayscale(0%);
-    }
-
-    .case-content {
-      padding: 28px;
-    }
-
-    .case-number {
-      color: var(--gold);
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-
-    .case-content h3 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 31px;
-      line-height: 1;
-      font-weight: 400;
-      margin-bottom: 16px;
-    }
-
-    .case-content p {
-      color: #cfc8bc;
-      line-height: 1.6;
-      font-size: 15px;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      margin-top: 55px;
-    }
-
-    .service {
-      background: var(--paper);
-      padding: 34px 28px;
-      min-height: 260px;
-      border: 1px solid rgba(0,0,0,0.1);
-      transition: 0.4s ease;
-    }
-
-    .service:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 22px 60px rgba(0,0,0,0.11);
-    }
-
-    .service span {
-      display: block;
-      font-family: Georgia, "Times New Roman", serif;
-      color: var(--olive);
-      font-size: 42px;
-      margin-bottom: 26px;
-    }
-
-    .service h3 {
-      font-size: 22px;
-      margin-bottom: 14px;
-    }
-
-    .service p {
-      color: #4c4a44;
-      line-height: 1.55;
-    }
-
-    .final-cta {
-      padding: 120px 24px;
-    }
-
-    .cta-box {
       background: var(--sage);
-      padding: clamp(48px, 8vw, 90px);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-box::before {
-      content: "A4";
-      position: absolute;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 360px;
-      line-height: 1;
-      color: rgba(255,255,255,0.11);
-      right: -40px;
-      top: -80px;
-    }
-
-    .cta-box h2 {
-      position: relative;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(46px, 7vw, 96px);
-      line-height: 0.9;
-      font-weight: 400;
-      letter-spacing: -4px;
-      max-width: 900px;
-      margin: 0 auto 26px;
-    }
-
-    .cta-box p {
-      position: relative;
-      font-size: 20px;
-      max-width: 720px;
-      margin: 0 auto 34px;
-      line-height: 1.6;
-    }
-
-    .cta-box .hero-actions {
-      position: relative;
-      justify-content: center;
-    }
-
-    footer {
-      background: var(--black);
-      color: var(--cream);
-      padding: 34px 24px;
-      text-align: center;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+      color: white;
     }
 
     [data-en] {
@@ -668,12 +67,668 @@
       display: inline;
     }
 
-    body.english [data-en].block {
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      background: rgba(244,241,235,.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(0,0,0,.08);
+    }
+
+    nav {
+      max-width: 1320px;
+      margin: auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .brand img {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: white;
+      padding: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+    }
+
+    .nav-links a {
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 0%;
+      height: 1px;
+      background: var(--ink);
+      transition: .3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .lang-btn {
+      border: 1px solid var(--ink);
+      background: transparent;
+      padding: 9px 13px;
+      cursor: pointer;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      transition: .3s;
+    }
+
+    .lang-btn:hover {
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity .9s ease, transform .9s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      align-items: center;
+      overflow: hidden;
+      background: linear-gradient(90deg, #f5f3ee 0%, #f5f3ee 45%, #ece8df 100%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(245,243,238,.98) 0%,
+        rgba(245,243,238,.92) 35%,
+        rgba(245,243,238,.45) 56%,
+        rgba(245,243,238,0) 75%
+      );
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 3;
+      padding: 120px 24px 80px;
+      padding-left: max(24px, calc((100vw - 1320px) / 2 + 24px));
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .hero-logo {
+      width: 190px;
+      margin-bottom: 42px;
+    }
+
+    .hero-logo img {
+      object-fit: contain;
+    }
+
+    .eyebrow {
+      color: var(--sage);
+      text-transform: uppercase;
+      letter-spacing: 12px;
+      font-size: 18px;
+      margin-bottom: 22px;
+      font-weight: 500;
+    }
+
+    .hero h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(64px, 8vw, 126px);
+      font-weight: 400;
+      line-height: .88;
+      letter-spacing: -5px;
+      color: var(--ink);
+      max-width: 650px;
+    }
+
+    .hero-line {
+      width: 150px;
+      height: 2px;
+      background: var(--sage);
+      margin: 34px 0 28px;
+    }
+
+    .hero p {
+      font-size: 22px;
+      line-height: 1.45;
+      max-width: 520px;
+      color: #303630;
+    }
+
+    .hero-label {
+      display: inline-block;
+      margin-top: 48px;
+      background: rgba(91,113,103,.86);
+      color: white;
+      padding: 15px 24px;
+      text-transform: uppercase;
+      letter-spacing: 10px;
+      font-size: 14px;
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 0 0 0 39%;
+      z-index: 1;
+    }
+
+    .hero-image img {
+      height: 100%;
+      object-position: center;
+      filter: brightness(1.04) contrast(.98) saturate(.92);
+      animation: slowZoom 9s ease forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 22px;
+      border: 1px solid var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 1.7px;
+      font-size: 12px;
+      font-weight: 700;
+      transition: .35s;
+    }
+
+    .btn.dark {
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 38px rgba(0,0,0,.12);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slowZoom {
+      from { transform: scale(1.05); }
+      to { transform: scale(1); }
+    }
+
+    section {
+      max-width: 1320px;
+      margin: auto;
+      padding: 110px 24px;
+    }
+
+    .section-kicker {
+      color: var(--sage);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 12px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(44px, 6vw, 92px);
+      font-weight: 400;
+      line-height: .9;
+      letter-spacing: -4px;
+      margin-bottom: 28px;
+      color: var(--ink);
+    }
+
+    .section-copy {
+      max-width: 780px;
+      font-size: 20px;
+      line-height: 1.65;
+      color: #3f423d;
+    }
+
+    .profile {
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .profile-card {
+      background: var(--paper);
+      padding: 16px;
+      box-shadow: 0 28px 70px var(--shadow);
+      transform: rotate(-1.2deg);
+    }
+
+    .profile-card img {
+      height: 560px;
+    }
+
+    .stats {
+      margin-top: 38px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .stat {
+      border-top: 1px solid rgba(0,0,0,.22);
+      padding-top: 18px;
+    }
+
+    .stat strong {
       display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      font-size: 34px;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 7px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+    }
+
+    .tags {
+      margin-top: 32px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background: var(--paper);
+      border: 1px solid rgba(0,0,0,.14);
+      padding: 10px 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      font-size: 12px;
+    }
+
+    .editorial-band {
+      max-width: none;
+      background: var(--ink);
+      color: var(--cream);
+      padding: 24px 0;
+      overflow: hidden;
+    }
+
+    .marquee {
+      display: flex;
+      width: max-content;
+      animation: marquee 24s linear infinite;
+    }
+
+    .marquee span {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 34px;
+      margin-right: 60px;
+      white-space: nowrap;
+      opacity: .95;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .process-intro {
+      max-width: 950px;
+      margin-bottom: 70px;
+    }
+
+    .story {
+      display: grid;
+      gap: 88px;
+    }
+
+    .story-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .story-item:nth-child(even) .note {
+      order: 2;
+    }
+
+    .note {
+      background: var(--paper);
+      padding: clamp(34px, 5vw, 58px);
+      box-shadow: 0 28px 75px rgba(0,0,0,.12);
+      position: relative;
+      transform: rotate(-1deg);
+    }
+
+    .note::before {
+      content: "";
+      position: absolute;
+      top: -15px;
+      left: 34px;
+      width: 95px;
+      height: 30px;
+      background: rgba(183,154,111,.42);
+      transform: rotate(-6deg);
+    }
+
+    .note small {
+      display: block;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .note h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(38px, 5vw, 66px);
+      line-height: .92;
+      font-weight: 400;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+
+    .note p,
+    .note li {
+      font-size: 21px;
+      line-height: 1.55;
+      color: #343630;
+    }
+
+    .note ul {
+      padding-left: 22px;
+    }
+
+    .note strong {
+      display: block;
+      margin-top: 24px;
+      font-size: 25px;
+      color: var(--ink);
+    }
+
+    .story-img {
+      height: 570px;
+      overflow: hidden;
+      box-shadow: 0 26px 65px rgba(0,0,0,.14);
+    }
+
+    .story-img img {
+      height: 100%;
+      filter: grayscale(100%) contrast(1.05);
+      transition: .7s;
+    }
+
+    .story-img:hover img {
+      transform: scale(1.05);
+      filter: grayscale(20%) contrast(1.03);
+    }
+
+    .portfolio {
+      max-width: none;
+      background: var(--black);
+      color: var(--cream);
+      padding: 120px 24px;
+    }
+
+    .portfolio-inner {
+      max-width: 1320px;
+      margin: auto;
+    }
+
+    .portfolio .section-kicker {
+      color: var(--gold);
+    }
+
+    .portfolio .section-title {
+      color: var(--cream);
+    }
+
+    .portfolio .section-copy {
+      color: #d6d0c7;
+    }
+
+    .case-grid {
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .case-card {
+      background: #181a17;
+      border: 1px solid rgba(255,255,255,.09);
+      overflow: hidden;
+      transition: .45s;
+    }
+
+    .case-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(255,255,255,.28);
+    }
+
+    .case-img {
+      height: 305px;
+      overflow: hidden;
+    }
+
+    .case-img img {
+      height: 100%;
+      filter: grayscale(16%) contrast(1.03);
+      transition: .7s;
+    }
+
+    .case-card:hover img {
+      transform: scale(1.06);
+      filter: grayscale(0%);
+    }
+
+    .case-content {
+      padding: 28px;
+    }
+
+    .case-number {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 11px;
+      margin-bottom: 17px;
+    }
+
+    .case-content h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      line-height: 1;
+      font-size: 31px;
+      margin-bottom: 16px;
+    }
+
+    .case-content p {
+      color: #d0c9bd;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 52px;
+    }
+
+    .service {
+      background: var(--paper);
+      border: 1px solid rgba(0,0,0,.1);
+      padding: 34px 28px;
+      min-height: 260px;
+      transition: .35s;
+    }
+
+    .service:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 60px rgba(0,0,0,.12);
+    }
+
+    .service span {
+      display: block;
+      color: var(--sage);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 42px;
+      margin-bottom: 24px;
+    }
+
+    .service h3 {
+      font-size: 22px;
+      margin-bottom: 14px;
+    }
+
+    .service p {
+      line-height: 1.55;
+      color: #4b4d47;
+    }
+
+    .cta-section {
+      padding: 120px 24px;
+    }
+
+    .cta-box {
+      background: var(--sage-light);
+      padding: clamp(50px, 8vw, 90px);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-box::before {
+      content: "A4";
+      position: absolute;
+      right: -35px;
+      top: -95px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 360px;
+      color: rgba(255,255,255,.15);
+      line-height: 1;
+    }
+
+    .cta-box h2 {
+      position: relative;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(46px, 7vw, 98px);
+      line-height: .9;
+      font-weight: 400;
+      letter-spacing: -4px;
+      max-width: 950px;
+      margin: 0 auto 26px;
+    }
+
+    .cta-box p {
+      position: relative;
+      font-size: 20px;
+      line-height: 1.6;
+      max-width: 720px;
+      margin: 0 auto 34px;
+    }
+
+    .cta-box .hero-actions {
+      position: relative;
+      justify-content: center;
+    }
+
+    footer {
+      background: var(--black);
+      color: var(--cream);
+      text-align: center;
+      padding: 34px 24px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
     }
 
     @media (max-width: 980px) {
-      .hero,
+      .hero {
+        display: block;
+        min-height: auto;
+      }
+
+      .hero::before {
+        background: linear-gradient(
+          to bottom,
+          rgba(245,243,238,.98) 0%,
+          rgba(245,243,238,.86) 52%,
+          rgba(245,243,238,.4) 100%
+        );
+      }
+
+      .hero-text {
+        padding: 110px 22px 480px;
+      }
+
+      .hero-image {
+        inset: auto 0 0 0;
+        height: 560px;
+      }
+
+      .hero-logo {
+        width: 150px;
+      }
+
+      .eyebrow {
+        letter-spacing: 7px;
+        font-size: 13px;
+      }
+
+      .hero h1 {
+        letter-spacing: -3px;
+      }
+
       .profile,
       .story-item {
         grid-template-columns: 1fr;
@@ -693,40 +748,37 @@
         display: none;
       }
 
-      .hero {
-        padding-top: 115px;
-      }
-
-      .hero h1 {
-        letter-spacing: -3px;
-      }
-
-      .hero-visual {
-        height: 540px;
-      }
-
-      .hero-badge {
-        font-size: 25px;
-      }
-
-      .profile-img img,
-      .story-media {
+      .profile-card img,
+      .story-img {
         height: 460px;
       }
     }
 
     @media (max-width: 560px) {
       nav {
-        padding: 13px 16px;
+        padding: 12px 16px;
       }
 
       .brand span {
         display: none;
       }
 
-      .hero,
-      section {
-        padding-inline: 18px;
+      .brand img {
+        width: 48px;
+        height: 48px;
+      }
+
+      .hero-text {
+        padding: 100px 18px 430px;
+      }
+
+      .hero-image {
+        height: 500px;
+      }
+
+      .hero-logo {
+        width: 130px;
+        margin-bottom: 30px;
       }
 
       .hero h1,
@@ -735,25 +787,34 @@
         letter-spacing: -2px;
       }
 
-      .hero-copy,
+      .hero p,
       .section-copy,
       .note p,
       .note li {
         font-size: 18px;
       }
 
+      .hero-label {
+        letter-spacing: 5px;
+        font-size: 11px;
+        padding: 13px 16px;
+      }
+
+      section {
+        padding: 85px 18px;
+      }
+
       .note {
         padding: 34px 24px;
       }
 
-      .hero-visual,
-      .profile-img img,
-      .story-media {
-        height: 430px;
+      .profile-card img,
+      .story-img {
+        height: 420px;
       }
 
-      .case-image {
-        height: 260px;
+      .case-img {
+        height: 250px;
       }
     }
   </style>
@@ -763,14 +824,14 @@
   <header>
     <nav>
       <a href="#inicio" class="brand">
-        <img src="images/logo.jpg" alt="A4 Panamá Arquitectura logo">
+        <img src="images/logo.jpg" alt="A4 Panamá Arquitectura logo" />
         <span>A4 Panamá</span>
       </a>
 
       <div class="nav-links">
         <a href="#perfil"><span data-es>Perfil</span><span data-en>Profile</span></a>
         <a href="#proceso"><span data-es>Proceso</span><span data-en>Process</span></a>
-        <a href="#portfolio"><span data-es>Portfolio</span><span data-en>Portfolio</span></a>
+        <a href="#portfolio">Portfolio</a>
         <a href="#servicios"><span data-es>Servicios</span><span data-en>Services</span></a>
         <a href="#contacto"><span data-es>Contacto</span><span data-en>Contact</span></a>
       </div>
@@ -781,10 +842,14 @@
 
   <main id="inicio">
     <section class="hero">
-      <div class="reveal">
+      <div class="hero-text">
+        <div class="hero-logo">
+          <img src="images/logo.jpg" alt="A4 Panamá Arquitectura" />
+        </div>
+
         <div class="eyebrow">
-          <span data-es>Arquitecta · Desarrollo de proyectos</span>
-          <span data-en>Architect · Project development</span>
+          <span data-es>Arquitecta</span>
+          <span data-en>Architect</span>
         </div>
 
         <h1>
@@ -792,67 +857,48 @@
           <span data-en>Design with intention.</span>
         </h1>
 
-        <p class="hero-copy">
-          <span data-es>
-            Transformo ideas, necesidades y espacios confusos en proyectos claros, funcionales y listos para avanzar con seguridad.
-          </span>
-          <span data-en>
-            I transform ideas, needs and confusing spaces into clear, functional projects ready to move forward with confidence.
-          </span>
+        <div class="hero-line"></div>
+
+        <p>
+          <span data-es>Ayudo a transformar espacios confusos en lugares claros, funcionales y bien pensados.</span>
+          <span data-en>I help transform confusing spaces into clear, functional and well-planned places.</span>
         </p>
 
         <div class="hero-actions">
-          <a class="btn dark" href="#contacto">
+          <a href="#contacto" class="btn dark">
             <span data-es>Agenda una asesoría</span>
             <span data-en>Book a consultation</span>
           </a>
-          <a class="btn" href="#portfolio">
-            <span data-es>Ver proyectos</span>
-            <span data-en>View projects</span>
+          <a href="#portfolio" class="btn">
+            <span data-es>Ver portfolio</span>
+            <span data-en>View portfolio</span>
           </a>
+        </div>
+
+        <div class="hero-label">
+          <span data-es>Desarrollo de proyectos</span>
+          <span data-en>Project development</span>
         </div>
       </div>
 
-      <div class="hero-visual reveal">
-        <img src="images/hero-annelina.jpg" alt="Annelina Arcia arquitecta con planos">
-        <div class="hero-card">
-          <span data-es>Claridad antes de construir.</span>
-          <span data-en>Clarity before building.</span>
-        </div>
-        <div class="hero-badge">A4 Panamá</div>
+      <div class="hero-image">
+        <img src="images/hero-annelina.jpg" alt="Annelina Arcia arquitecta con planos" />
       </div>
     </section>
 
-    <div class="marquee">
-      <div class="marquee-track">
-        <span>Diseño arquitectónico</span>
-        <span>Dibujo técnico</span>
-        <span>AutoCAD</span>
-        <span>Revit</span>
-        <span>Gestión de proyectos</span>
-        <span>Planos ejecutivos</span>
-        <span>Diseño arquitectónico</span>
-        <span>Dibujo técnico</span>
-        <span>AutoCAD</span>
-        <span>Revit</span>
-        <span>Gestión de proyectos</span>
-        <span>Planos ejecutivos</span>
-      </div>
-    </div>
-
     <section id="perfil" class="profile">
-      <div class="profile-img reveal">
-        <img src="images/profile-annelina.jpg" alt="Annelina Arcia revisando planos arquitectónicos">
+      <div class="profile-card reveal">
+        <img src="images/profile-annelina.jpg" alt="Annelina Arcia revisando planos" />
       </div>
 
       <div class="reveal">
-        <div class="eyebrow">
+        <div class="section-kicker">
           <span data-es>Perfil profesional</span>
           <span data-en>Professional profile</span>
         </div>
 
         <h2 class="section-title">
-          <span data-es>Una arquitectura clara, técnica y humana.</span>
+          <span data-es>Arquitectura clara, técnica y humana.</span>
           <span data-en>Clear, technical and human architecture.</span>
         </h2>
 
@@ -890,29 +936,46 @@
       </div>
     </section>
 
+    <section class="editorial-band">
+      <div class="marquee">
+        <span>Diseño arquitectónico</span>
+        <span>Planos técnicos</span>
+        <span>AutoCAD</span>
+        <span>Revit</span>
+        <span>Gestión de proyectos</span>
+        <span>Diseño con intención</span>
+        <span>Diseño arquitectónico</span>
+        <span>Planos técnicos</span>
+        <span>AutoCAD</span>
+        <span>Revit</span>
+        <span>Gestión de proyectos</span>
+        <span>Diseño con intención</span>
+      </div>
+    </section>
+
     <section id="proceso">
-      <div class="story-header reveal">
-        <div class="eyebrow">
-          <span data-es>Proceso de trabajo</span>
-          <span data-en>Work process</span>
+      <div class="process-intro reveal">
+        <div class="section-kicker">
+          <span data-es>Proceso</span>
+          <span data-en>Process</span>
         </div>
 
         <h2 class="section-title">
-          <span data-es>Cómo hago que un proyecto deje de sentirse complicado.</span>
-          <span data-en>How I make a project stop feeling complicated.</span>
+          <span data-es>Un buen proyecto empieza con claridad.</span>
+          <span data-en>A good project starts with clarity.</span>
         </h2>
 
         <p class="section-copy">
           <span data-es>
-            Un buen proyecto no empieza dibujando por dibujar. Empieza entendiendo el espacio, las necesidades reales y las decisiones que deben tomarse antes de construir.
+            Antes de construir, remodelar o invertir, necesitas entender tu espacio, tus necesidades y las decisiones que harán que el proyecto avance sin improvisaciones.
           </span>
           <span data-en>
-            A good project does not start by drawing for the sake of drawing. It starts by understanding the space, real needs and the decisions that must be made before building.
+            Before building, remodeling or investing, you need to understand your space, your needs and the decisions that will help the project move forward without improvisation.
           </span>
         </p>
       </div>
 
-      <div class="story-grid">
+      <div class="story">
         <article class="story-item reveal">
           <div class="note">
             <small>Primero</small>
@@ -921,12 +984,8 @@
               <span data-en>What problems I solve</span>
             </h3>
             <p>
-              <span data-es>
-                Ayudo a transformar espacios confusos en lugares bien pensados, funcionales y habitables.
-              </span>
-              <span data-en>
-                I help transform confusing spaces into well-planned, functional and livable places.
-              </span>
+              <span data-es>Ayudo a transformar espacios confusos en lugares bien pensados, funcionales y habitables.</span>
+              <span data-en>I help transform confusing spaces into well-planned, functional and livable places.</span>
             </p>
             <strong>
               <span data-es>Menos confusión, mejores decisiones.</span>
@@ -934,8 +993,8 @@
             </strong>
           </div>
 
-          <div class="story-media">
-            <img src="images/project-plans.jpg" alt="Planos arquitectónicos sobre mesa">
+          <div class="story-img">
+            <img src="images/project-plans.jpg" alt="Planos arquitectónicos" />
           </div>
         </article>
 
@@ -947,21 +1006,17 @@
               <span data-en>Who I help</span>
             </h3>
             <p>
-              <span data-es>
-                Trabajo con personas que quieren remodelar, construir o rediseñar su espacio y buscan claridad, orden y buenas decisiones desde el inicio.
-              </span>
-              <span data-en>
-                I work with people who want to remodel, build or redesign their space and need clarity, order and better decisions from the start.
-              </span>
+              <span data-es>Trabajo con personas que quieren remodelar, construir o rediseñar su espacio y buscan orden, claridad y buenas decisiones desde el inicio.</span>
+              <span data-en>I work with people who want to remodel, build or redesign their space and need order, clarity and better decisions from the beginning.</span>
             </p>
             <strong>
-              <span data-es>La claridad genera confianza.</span>
+              <span data-es>Ser clara genera confianza.</span>
               <span data-en>Clarity builds trust.</span>
             </strong>
           </div>
 
-          <div class="story-media">
-            <img src="images/project-house.jpg" alt="Render de vivienda unifamiliar">
+          <div class="story-img">
+            <img src="images/project-house.jpg" alt="Render de vivienda unifamiliar" />
           </div>
         </article>
 
@@ -980,8 +1035,8 @@
             </ul>
           </div>
 
-          <div class="story-media">
-            <img src="images/project-autocad.jpg" alt="AutoCAD y dibujo técnico arquitectónico">
+          <div class="story-img">
+            <img src="images/project-autocad.jpg" alt="AutoCAD y dibujo técnico" />
           </div>
         </article>
 
@@ -993,12 +1048,8 @@
               <span data-en>A project ready to move forward</span>
             </h3>
             <p>
-              <span data-es>
-                El resultado es un proyecto claro, bien pensado y preparado para ejecutarse sin dudas ni improvisaciones.
-              </span>
-              <span data-en>
-                The result is a clear, well-planned project prepared to be executed without doubts or improvisation.
-              </span>
+              <span data-es>El resultado es un proyecto claro, bien pensado y preparado para ejecutarse sin dudas ni improvisaciones.</span>
+              <span data-en>The result is a clear, well-planned project prepared to be executed without doubts or improvisation.</span>
             </p>
             <strong>
               <span data-es>Cuando el proceso es claro, todo fluye.</span>
@@ -1006,8 +1057,8 @@
             </strong>
           </div>
 
-          <div class="story-media">
-            <img src="images/project-roof-detail.jpg" alt="Detalle técnico arquitectónico">
+          <div class="story-img">
+            <img src="images/project-roof-detail.jpg" alt="Detalle constructivo" />
           </div>
         </article>
       </div>
@@ -1016,30 +1067,30 @@
     <section id="portfolio" class="portfolio">
       <div class="portfolio-inner">
         <div class="reveal">
-          <div class="eyebrow">
-            <span data-es>Portafolio seleccionado</span>
+          <div class="section-kicker">
+            <span data-es>Portfolio seleccionado</span>
             <span data-en>Selected portfolio</span>
           </div>
 
           <h2 class="section-title">
-            <span data-es>Proyectos que comunican precisión, función y criterio.</span>
-            <span data-en>Projects that communicate precision, function and intention.</span>
+            <span data-es>Proyectos que elevan claridad, función y ejecución.</span>
+            <span data-en>Projects that elevate clarity, function and execution.</span>
           </h2>
 
           <p class="section-copy">
             <span data-es>
-              Cada proyecto representa una etapa distinta del proceso arquitectónico: diseño conceptual, documentación técnica, coordinación, visualización y desarrollo ejecutivo.
+              Cada caso comunica una parte del proceso arquitectónico: diseño, documentación técnica, visualización, coordinación y desarrollo ejecutivo.
             </span>
             <span data-en>
-              Each project represents a different stage of the architectural process: concept design, technical documentation, coordination, visualization and executive development.
+              Each case communicates a part of the architectural process: design, technical documentation, visualization, coordination and executive development.
             </span>
           </p>
         </div>
 
         <div class="case-grid">
           <article class="case-card reveal">
-            <div class="case-image">
-              <img src="images/project-house.jpg" alt="Vivienda unifamiliar">
+            <div class="case-img">
+              <img src="images/project-house.jpg" alt="Vivienda unifamiliar" />
             </div>
             <div class="case-content">
               <div class="case-number">Case 01 · Residencial</div>
@@ -1048,19 +1099,15 @@
                 <span data-en>Single-family home</span>
               </h3>
               <p>
-                <span data-es>
-                  Diseño residencial optimizado para confort, ventilación natural, volumetría clara y una lectura contemporánea del espacio familiar.
-                </span>
-                <span data-en>
-                  Residential design optimized for comfort, natural ventilation, clear volume and a contemporary interpretation of family space.
-                </span>
+                <span data-es>Diseño residencial optimizado para confort, ventilación natural, volumetría clara y lectura contemporánea.</span>
+                <span data-en>Residential design optimized for comfort, natural ventilation, clear volume and contemporary reading.</span>
               </p>
             </div>
           </article>
 
           <article class="case-card reveal">
-            <div class="case-image">
-              <img src="images/project-structure.jpg" alt="Planos estructurales">
+            <div class="case-img">
+              <img src="images/project-structure.jpg" alt="Pórticos de vigas" />
             </div>
             <div class="case-content">
               <div class="case-number">Case 02 · Técnico</div>
@@ -1069,19 +1116,15 @@
                 <span data-en>Structural documentation</span>
               </h3>
               <p>
-                <span data-es>
-                  Desarrollo de detalles, columnas, vigas y documentación técnica con enfoque en precisión, lectura clara y coordinación constructiva.
-                </span>
-                <span data-en>
-                  Development of details, columns, beams and technical documentation focused on precision, readability and construction coordination.
-                </span>
+                <span data-es>Desarrollo de vigas, columnas, detalles y lectura técnica para coordinación constructiva.</span>
+                <span data-en>Development of beams, columns, details and technical reading for construction coordination.</span>
               </p>
             </div>
           </article>
 
           <article class="case-card reveal">
-            <div class="case-image">
-              <img src="images/project-autocad.jpg" alt="Digitalización arquitectónica">
+            <div class="case-img">
+              <img src="images/project-autocad.jpg" alt="AutoCAD" />
             </div>
             <div class="case-content">
               <div class="case-number">Case 03 · Digitalización</div>
@@ -1090,19 +1133,15 @@
                 <span data-en>From sketch to digital plan</span>
               </h3>
               <p>
-                <span data-es>
-                  Conversión de ideas, levantamientos y anotaciones técnicas en planos organizados para revisión, desarrollo y ejecución.
-                </span>
-                <span data-en>
-                  Conversion of ideas, surveys and technical annotations into organized drawings for review, development and execution.
-                </span>
+                <span data-es>Conversión de ideas y anotaciones técnicas en planos organizados para revisión y ejecución.</span>
+                <span data-en>Conversion of ideas and technical annotations into organized drawings for review and execution.</span>
               </p>
             </div>
           </article>
 
           <article class="case-card reveal">
-            <div class="case-image">
-              <img src="images/project-plans.jpg" alt="Planos de proyecto educativo">
+            <div class="case-img">
+              <img src="images/project-plans.jpg" alt="Planos impresos" />
             </div>
             <div class="case-content">
               <div class="case-number">Case 04 · Institucional</div>
@@ -1111,19 +1150,15 @@
                 <span data-en>Educational projects</span>
               </h3>
               <p>
-                <span data-es>
-                  Desarrollo de planos para pabellones escolares, cubiertas, áreas funcionales y documentación de revisión técnica.
-                </span>
-                <span data-en>
-                  Development of drawings for school pavilions, roofs, functional areas and technical review documentation.
-                </span>
+                <span data-es>Desarrollo de planos para pabellones escolares, cubiertas, áreas funcionales y revisión técnica.</span>
+                <span data-en>Drawings for school pavilions, roofs, functional areas and technical review.</span>
               </p>
             </div>
           </article>
 
           <article class="case-card reveal">
-            <div class="case-image">
-              <img src="images/project-roof-detail.jpg" alt="Detalle constructivo">
+            <div class="case-img">
+              <img src="images/project-roof-detail.jpg" alt="Detalle técnico" />
             </div>
             <div class="case-content">
               <div class="case-number">Case 05 · Detalle</div>
@@ -1132,19 +1167,15 @@
                 <span data-en>Construction detail</span>
               </h3>
               <p>
-                <span data-es>
-                  Lectura técnica de conexiones, cubierta, columnas y soluciones constructivas para evitar improvisaciones en obra.
-                </span>
-                <span data-en>
-                  Technical reading of connections, roofing, columns and construction solutions to prevent improvisation on site.
-                </span>
+                <span data-es>Soluciones técnicas para conexiones, cubierta, columnas y ejecución sin improvisaciones.</span>
+                <span data-en>Technical solutions for connections, roofing, columns and execution without improvisation.</span>
               </p>
             </div>
           </article>
 
           <article class="case-card reveal">
-            <div class="case-image">
-              <img src="images/profile-annelina.jpg" alt="Gestión de proyecto arquitectónico">
+            <div class="case-img">
+              <img src="images/profile-annelina.jpg" alt="Gestión de proyectos" />
             </div>
             <div class="case-content">
               <div class="case-number">Case 06 · Gestión</div>
@@ -1153,12 +1184,8 @@
                 <span data-en>Project coordination</span>
               </h3>
               <p>
-                <span data-es>
-                  Organización de información, cronogramas, proveedores y seguimiento técnico para que el proyecto avance con orden.
-                </span>
-                <span data-en>
-                  Organization of information, timelines, vendors and technical follow-up so the project moves forward with order.
-                </span>
+                <span data-es>Organización de información, cronogramas, proveedores y seguimiento técnico.</span>
+                <span data-en>Organization of information, timelines, vendors and technical follow-up.</span>
               </p>
             </div>
           </article>
@@ -1168,7 +1195,7 @@
 
     <section id="servicios">
       <div class="reveal">
-        <div class="eyebrow">
+        <div class="section-kicker">
           <span data-es>Servicios</span>
           <span data-en>Services</span>
         </div>
@@ -1179,12 +1206,8 @@
         </h2>
 
         <p class="section-copy">
-          <span data-es>
-            Desde la idea inicial hasta la documentación técnica, el enfoque es ayudarte a tomar decisiones correctas antes de invertir tiempo, dinero y energía en obra.
-          </span>
-          <span data-en>
-            From the initial idea to technical documentation, the focus is helping you make the right decisions before investing time, money and energy into construction.
-          </span>
+          <span data-es>Desde la idea inicial hasta la documentación técnica, el enfoque es ayudarte a tomar decisiones correctas antes de invertir en obra.</span>
+          <span data-en>From the initial idea to technical documentation, the focus is helping you make better decisions before investing in construction.</span>
         </p>
       </div>
 
@@ -1215,7 +1238,7 @@
       </div>
     </section>
 
-    <section id="contacto" class="final-cta">
+    <section id="contacto" class="cta-section">
       <div class="cta-box reveal">
         <h2>
           <span data-es>Tu proyecto necesita claridad antes de empezar.</span>
@@ -1223,18 +1246,14 @@
         </h2>
 
         <p>
-          <span data-es>
-            Agenda una asesoría inicial para revisar tu idea, entender tu espacio y definir el mejor camino para avanzar.
-          </span>
-          <span data-en>
-            Book an initial consultation to review your idea, understand your space and define the best path forward.
-          </span>
+          <span data-es>Agenda una asesoría inicial para revisar tu idea, entender tu espacio y definir el mejor camino para avanzar.</span>
+          <span data-en>Book an initial consultation to review your idea, understand your space and define the best path forward.</span>
         </p>
 
         <div class="hero-actions">
           <a class="btn dark" href="mailto:annarc9@gmail.com">
-            <span data-es>Enviar correo</span>
-            <span data-en>Send email</span>
+            <span data-es>Agenda una asesoría</span>
+            <span data-en>Book consultation</span>
           </a>
 
           <a class="btn" href="https://www.linkedin.com/in/annarciav" target="_blank" rel="noopener">
