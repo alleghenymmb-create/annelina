@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Annelina Arcia V. | Arquitectura con intención</title>
+  <meta name="description" content="Arquitecta especializada en diseño arquitectónico, dibujo técnico, Revit, AutoCAD y desarrollo de proyectos en Panamá." />
+
+  <style>
+    :root {
+      --black: #111111;
+      --white: #ffffff;
+      --cream: #f4efe7;
+      --paper: #fbfaf7;
+      --sage: #9fb8ad;
+      --gray: #777;
+      --soft: #e8e1d7;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--cream);
+      color: var(--black);
+      line-height: 1.5;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(244, 239, 231, 0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .lang {
+      border: 1px solid var(--black);
+      padding: 8px 12px;
+      background: transparent;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 40px;
+      max-width: 1200px;
+      margin: auto;
+      padding: 130px 22px 70px;
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--gray);
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(54px, 8vw, 110px);
+      line-height: .88;
+      letter-spacing: -5px;
+      max-width: 650px;
+    }
+
+    .hero p {
+      margin-top: 28px;
+      font-size: 20px;
+      max-width: 560px;
+    }
+
+    .hero-buttons {
+      margin-top: 34px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 22px;
+      border: 1px solid var(--black);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      transition: .3s;
+    }
+
+    .btn.dark {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .hero-image {
+      position: relative;
+      min-height: 620px;
+      overflow: hidden;
+      background: var(--soft);
+    }
+
+    .hero-image img {
+      height: 620px;
+      filter: grayscale(15%);
+    }
+
+    .hero-image::after {
+      content: "A4 PANAMÁ";
+      position: absolute;
+      bottom: 26px;
+      left: 26px;
+      color: white;
+      font-size: 42px;
+      letter-spacing: 10px;
+      font-weight: 300;
+    }
+
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 90px 22px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .profile-card {
+      background: var(--paper);
+      padding: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.08);
+      transform: rotate(-1deg);
+    }
+
+    .profile-card img {
+      height: 460px;
+    }
+
+    .section-title {
+      font-size: clamp(38px, 6vw, 76px);
+      line-height: .95;
+      letter-spacing: -3px;
+      margin-bottom: 24px;
+    }
+
+    .large-text {
+      font-size: 20px;
+      max-width: 700px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .tag {
+      border: 1px solid var(--black);
+      padding: 9px 12px;
+      font-size: 13px;
+      background: var(--paper);
+    }
+
+    .story {
+      display: grid;
+      gap: 80px;
+      padding-top: 30px;
+    }
+
+    .story-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .story-item:nth-child(even) .note {
+      order: 2;
+    }
+
+    .story-img {
+      height: 520px;
+      background: #ddd;
+      filter: grayscale(100%);
+      overflow: hidden;
+    }
+
+    .story-img img {
+      height: 100%;
+    }
+
+    .note {
+      background: var(--paper);
+      padding: 44px;
+      box-shadow: 0 18px 55px rgba(0,0,0,.10);
+      position: relative;
+    }
+
+    .note::before {
+      content: "";
+      position: absolute;
+      top: -16px;
+      left: 30px;
+      width: 80px;
+      height: 28px;
+      background: rgba(214, 190, 150, .55);
+      transform: rotate(-6deg);
+    }
+
+    .note small {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gray);
+      margin-bottom: 14px;
+    }
+
+    .note h2 {
+      font-size: clamp(34px, 5vw, 62px);
+      line-height: .95;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+
+    .note p,
+    .note li {
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+
+    .note strong {
+      display: block;
+      margin-top: 25px;
+      font-size: 25px;
+    }
+
+    .note ul {
+      padding-left: 22px;
+    }
+
+    .projects {
+      background: var(--black);
+      color: var(--white);
+      max-width: none;
+      padding: 100px 22px;
+    }
+
+    .projects-inner {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 38px;
+    }
+
+    .project-card {
+      background: #1d1d1d;
+      overflow: hidden;
+      min-height: 440px;
+    }
+
+    .project-card img {
+      height: 260px;
+      filter: grayscale(30%);
+    }
+
+    .project-card div {
+      padding: 24px;
+    }
+
+    .project-card h3 {
+      font-size: 25px;
+      margin-bottom: 12px;
+    }
+
+    .project-card p {
+      color: #d0d0d0;
+      font-size: 15px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 36px;
+    }
+
+    .service {
+      background: var(--paper);
+      padding: 30px;
+      min-height: 220px;
+      border: 1px solid rgba(0,0,0,.08);
+    }
+
+    .service span {
+      color: var(--sage);
+      font-size: 34px;
+      font-weight: 800;
+    }
+
+    .service h3 {
+      margin: 18px 0 10px;
+      font-size: 22px;
+    }
+
+    .contact {
+      text-align: center;
+    }
+
+    .contact-box {
+      background: var(--sage);
+      padding: 70px 24px;
+    }
+
+    .contact-box h2 {
+      font-size: clamp(42px, 7vw, 88px);
+      line-height: .9;
+      letter-spacing: -4px;
+      margin-bottom: 22px;
+    }
+
+    footer {
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 28px;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    [data-en] {
+      display: none;
+    }
+
+    body.english [data-es] {
+      display: none;
+    }
+
+    body.english [data-en] {
+      display: inline;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .split,
+      .story-item {
+        grid-template-columns: 1fr;
+      }
+
+      .story-item:nth-child(even) .note {
+        order: 0;
+      }
+
+      .project-grid,
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-image,
+      .hero-image img {
+        min-height: 480px;
+        height: 480px;
+      }
+
+      h1 {
+        letter-spacing: -3px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="#top" class="brand">
+        <img src="logo.jpg" alt="A4 Panamá Arquitectura logo">
+        <span>A4 PANAMÁ</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#perfil"><span data-es>Perfil</span><span data-en>Profile</span></a>
+        <a href="#proceso"><span data-es>Proceso</span><span data-en>Process</span></a>
+        <a href="#proyectos"><span data-es>Proyectos</span><span data-en>Projects</span></a>
+        <a href="#contacto"><span data-es>Contacto</span><span data-en>Contact</span></a>
+      </div>
+
+      <button class="lang" onclick="toggleLang()">ES / EN</button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">
+          <span data-es>Arquitecta · Desarrollo de proyectos</span>
+          <span data-en>Architect · Project development</span>
+        </div>
+
+        <h1>
+          <span data-es>Diseño con intención.</span>
+          <span data-en>Design with intention.</span>
+        </h1>
+
+        <p>
+          <span data-es>Ayudo a transformar espacios confusos en lugares claros, funcionales y bien pensados.</span>
+          <span data-en>I help transform confusing spaces into clear, functional and well-planned places.</span>
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#proceso" class="btn dark">
+            <span data-es>Ver proceso</span>
+            <span data-en>View process</span>
+          </a>
+          <a href="#contacto" class="btn">
+            <span data-es>Contactar</span>
+            <span data-en>Contact</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <img src="hero-annelina.jpg" alt="Annelina Arcia arquitecta con planos">
+      </div>
+    </section>
+
+    <section id="perfil" class="split">
+      <div class="profile-card">
+        <img src="profile-annelina.jpg" alt="Annelina Arcia revisando planos">
+      </div>
+
+      <div>
+        <div class="eyebrow">
+          <span data-es>Perfil profesional</span>
+          <span data-en>Professional profile</span>
+        </div>
+
+        <h2 class="section-title">
+          <span data-es>Arquitectura clara, técnica y humana.</span>
+          <span data-en>Clear, technical and human architecture.</span>
+        </h2>
+
+        <p class="large-text">
+          <span data-es>
+            Soy Annelina Arcia, arquitecta enfocada en desarrollo de proyectos, dibujo técnico, documentación arquitectónica, AutoCAD y Revit. Trabajo con personas que quieren construir, remodelar o rediseñar con orden, claridad y una visión bien definida desde el inicio.
+          </span>
+          <span data-en>
+            I’m Annelina Arcia, an architect focused on project development, technical drafting, architectural documentation, AutoCAD and Revit. I work with people who want to build, remodel or redesign with order, clarity and a well-defined vision from the beginning.
+          </span>
+        </p>
+
+        <div class="tags">
+          <span class="tag">AutoCAD</span>
+          <span class="tag">Revit</span>
+          <span class="tag">Dibujo técnico</span>
+          <span class="tag">Diseño arquitectónico</span>
+          <span class="tag">Gestión de proyectos</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="proceso">
+      <div class="eyebrow">
+        <span data-es>Proceso</span>
+        <span data-en>Process</span>
+      </div>
+
+      <h2 class="section-title">
+        <span data-es>Cómo explico lo que hago como arquitecta.</span>
+        <span data-en>How I explain what I do as an architect.</span>
+      </h2>
+
+      <div class="story">
+        <div class="story-item">
+          <div class="note">
+            <small>Primero</small>
+            <h2>
+              <span data-es>Qué problemas resuelvo</span>
+              <span data-en>What problems I solve</span>
+            </h2>
+            <p>
+              <span data-es>Ayudo a las personas a transformar espacios confusos en lugares bien pensados, funcionales y habitables.</span>
+              <span data-en>I help people transform confusing spaces into well-planned, functional and livable places.</span>
+            </p>
+            <strong>
+              <span data-es>Menos confusión, mejores decisiones.</span>
+              <span data-en>Less confusion, better decisions.</span>
+            </strong>
+          </div>
+
+          <div class="story-img">
+            <img src="project-plans.jpg" alt="Planos arquitectónicos">
+          </div>
+        </div>
+
+        <div class="story-item">
+          <div class="note">
+            <small>Segundo</small>
+            <h2>
+              <span data-es>A quién ayudo</span>
+              <span data-en>Who I help</span>
+            </h2>
+            <p>
+              <span data-es>Trabajo con personas que quieren remodelar, construir o rediseñar su espacio y buscan claridad, orden y buenas decisiones desde el inicio.</span>
+              <span data-en>I work with people who want to remodel, build or redesign their space and need clarity, order and good decisions from the beginning.</span>
+            </p>
+            <strong>
+              <span data-es>Ser clara genera confianza.</span>
+              <span data-en>Clarity builds trust.</span>
+            </strong>
+          </div>
+
+          <div class="story-img">
+            <img src="project-house.jpg" alt="Diseño de vivienda">
+          </div>
+        </div>
+
+        <div class="story-item">
+          <div class="note">
+            <small>Tercero</small>
+            <h2>
+              <span data-es>Cómo lo hago</span>
+              <span data-en>How I work</span>
+            </h2>
+            <ul>
+              <li><span data-es>Visita al sitio y entrevista inicial.</span><span data-en>Site visit and initial interview.</span></li>
+              <li><span data-es>Desarrollo de anteproyecto.</span><span data-en>Concept design development.</span></li>
+              <li><span data-es>Propuesta 3D y renders.</span><span data-en>3D proposal and renders.</span></li>
+              <li><span data-es>Planos técnicos listos para construir.</span><span data-en>Technical drawings ready for construction.</span></li>
+            </ul>
+          </div>
+
+          <div class="story-img">
+            <img src="project-autocad.jpg" alt="Trabajo en AutoCAD">
+          </div>
+        </div>
+
+        <div class="story-item">
+          <div class="note">
+            <small>Resultado</small>
+            <h2>
+              <span data-es>Un proyecto claro</span>
+              <span data-en>A clear project</span>
+            </h2>
+            <p>
+              <span data-es>El resultado es un proyecto claro, bien pensado y listo para ejecutarse sin dudas ni improvisaciones.</span>
+              <span data-en>The result is a clear, well-planned project ready to be executed without doubts or improvisation.</span>
+            </p>
+            <strong>
+              <span data-es>Cuando el proceso es claro, todo fluye.</span>
+              <span data-en>When the process is clear, everything flows.</span>
+            </strong>
+          </div>
+
+          <div class="story-img">
+            <img src="project-roof-detail.jpg" alt="Detalle constructivo de techo">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="proyectos" class="projects">
+      <div class="projects-inner">
+        <div class="eyebrow">
+          <span data-es>Portafolio seleccionado</span>
+          <span data-en>Selected portfolio</span>
+        </div>
+
+        <h2 class="section-title">
+          <span data-es>Proyectos arquitectónicos</span>
+          <span data-en>Architectural projects</span>
+        </h2>
+
+        <div class="project-grid">
+          <article class="project-card">
+            <img src="project-house.jpg" alt="Vivienda unifamiliar">
+            <div>
+              <h3>
+                <span data-es>Vivienda unifamiliar</span>
+                <span data-en>Single-family home</span>
+              </h3>
+              <p>
+                <span data-es>Diseño residencial con enfoque en volumetría, ventilación natural y funcionalidad.</span>
+                <span data-en>Residential design focused on volume, natural ventilation and functionality.</span>
+              </p>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img src="project-structure.jpg" alt="Planos estructurales">
+            <div>
+              <h3>
+                <span data-es>Planos técnicos</span>
+                <span data-en>Technical drawings</span>
+              </h3>
+              <p>
+                <span data-es>Desarrollo de detalles estructurales, vigas, columnas y documentación técnica.</span>
+                <span data-en>Development of structural details, beams, columns and technical documentation.</span>
+              </p>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img src="project-autocad.jpg" alt="AutoCAD arquitectura">
+            <div>
+              <h3>
+                <span data-es>Digitalización arquitectónica</span>
+                <span data-en>Architectural digitization</span>
+              </h3>
+              <p>
+                <span data-es>Levantamiento, digitalización y organización de planos en AutoCAD y Revit.</span>
+                <span data-en>Plan digitization and organization in AutoCAD and Revit.</span>
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="eyebrow">
+        <span data-es>Servicios</span>
+        <span data-en>Services</span>
+      </div>
+
+      <h2 class="section-title">
+        <span data-es>Servicios principales</span>
+        <span data-en>Main services</span>
+      </h2>
+
+      <div class="services-grid">
+        <div class="service">
+          <span>01</span>
+          <h3><span data-es>Diseño arquitectónico</span><span data-en>Architectural design</span></h3>
+          <p><span data-es>Propuestas residenciales, comerciales e institucionales.</span><span data-en>Residential, commercial and institutional proposals.</span></p>
+        </div>
+
+        <div class="service">
+          <span>02</span>
+          <h3><span data-es>Dibujo técnico</span><span data-en>Technical drafting</span></h3>
+          <p><span data-es>Planos claros, organizados y listos para revisión.</span><span data-en>Clear, organized drawings ready for review.</span></p>
+        </div>
+
+        <div class="service">
+          <span>03</span>
+          <h3>AutoCAD & Revit</h3>
+          <p><span data-es>Digitalización, modelado y documentación técnica.</span><span data-en>Digitization, modeling and technical documentation.</span></p>
+        </div>
+
+        <div class="service">
+          <span>04</span>
+          <h3><span data-es>Gestión de proyectos</span><span data-en>Project management</span></h3>
+          <p><span data-es>Coordinación, cronogramas, proveedores y seguimiento.</span><span data-en>Coordination, timelines, vendors and follow-up.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="contact">
+      <div class="contact-box">
+        <h2>
+          <span data-es>Hablemos de tu próximo espacio.</span>
+          <span data-en>Let’s talk about your next space.</span>
+        </h2>
+
+        <p class="large-text" style="margin:auto;">
+          <span data-es>Agenda una consulta o solicita información sobre diseño, planos o desarrollo de proyectos.</span>
+          <span data-en>Schedule a consultation or request information about design, drawings or project development.</span>
+        </p>
+
+        <div class="hero-buttons" style="justify-content:center;">
+          <a class="btn dark" href="mailto:annarc9@gmail.com">annarc9@gmail.com</a>
+          <a class="btn" href="https://www.linkedin.com/in/annarciav" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 A4 Panamá · Annelina Arcia V. · Arquitectura
+  </footer>
+
+  <script>
+    function toggleLang() {
+      document.body.classList.toggle("english");
+      document.documentElement.lang =
+        document.body.classList.contains("english") ? "en" : "es";
+    }
+  </script>
+</body>
+</html>
