@@ -897,10 +897,68 @@
         <a href="#contacto"><span data-es>Contacto</span><span data-en>Contact</span></a>
       </div>
 
-      <div class="language-switch">
-        <button class="es-btn" onclick="setLanguage('es')">ES</button>
-        <button class="en-btn" onclick="setLanguage('en')">EN</button>
-      </div>
+      [data-en] {
+  display: none !important;
+}
+
+body.english [data-es] {
+  display: none !important;
+}
+
+body.english [data-en] {
+  display: inline !important;
+}
+
+.language-switch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 104px;
+  height: 44px;
+  padding: 5px;
+  background: #10251d;
+  border: 1px solid rgba(198, 161, 91, 0.55);
+  border-radius: 999px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.18);
+  overflow: hidden;
+}
+
+.lang-option {
+  position: relative;
+  z-index: 2;
+  width: 47px;
+  height: 34px;
+  border: 0;
+  background: transparent;
+  color: #f3eadc;
+  cursor: pointer;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1.4px;
+  transition: color .35s ease;
+}
+
+.lang-slider {
+  position: absolute;
+  z-index: 1;
+  top: 5px;
+  left: 5px;
+  width: 47px;
+  height: 34px;
+  border-radius: 999px;
+  background: #c6a15b;
+  transition: transform .35s cubic-bezier(.4, 0, .2, 1);
+}
+
+body.english .lang-slider {
+  transform: translateX(47px);
+}
+
+body:not(.english) .es-btn,
+body.english .en-btn {
+  color: #10251d;
+}
     </nav>
   </header>
 
@@ -1309,5 +1367,18 @@
 
     revealElements.forEach(el => observer.observe(el));
   </script>
+  <script>
+  function setLanguage(lang) {
+    const isEnglish = lang === "en";
+
+    document.body.classList.toggle("english", isEnglish);
+    document.documentElement.lang = isEnglish ? "en" : "es";
+
+    document.querySelector(".es-btn").classList.toggle("active", !isEnglish);
+    document.querySelector(".en-btn").classList.toggle("active", isEnglish);
+  }
+
+  setLanguage("es");
+</script>
 </body>
 </html>
