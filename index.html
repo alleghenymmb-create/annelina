@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>A4 Panamá | Annelina Arcia Arquitectura</title>
-
   <meta name="description" content="A4 Panamá Arquitectura. Annelina Arcia V. Diseño arquitectónico, documentación técnica, AutoCAD, Revit y desarrollo de proyectos." />
 
   <style>
@@ -15,13 +14,11 @@
       --deep: #10251d;
       --green: #1f4a38;
       --sage: #879f8e;
-      --moss: #546f5d;
       --gold: #c6a15b;
       --terracotta: #9b5b3e;
       --black: #0b0f0c;
-      --white: #ffffff;
       --muted: #6f756d;
-      --shadow: rgba(0, 0, 0, 0.16);
+      --shadow: rgba(0,0,0,.16);
     }
 
     * {
@@ -52,11 +49,6 @@
       text-decoration: none;
     }
 
-    ::selection {
-      background: var(--green);
-      color: var(--cream);
-    }
-
     [data-en] {
       display: none !important;
     }
@@ -75,7 +67,7 @@
 
     .reveal {
       opacity: 0;
-      transform: translateY(48px);
+      transform: translateY(44px);
       transition: opacity 1s ease, transform 1s ease;
     }
 
@@ -88,9 +80,9 @@
       position: fixed;
       inset: 0 0 auto 0;
       z-index: 999;
-      background: rgba(243, 234, 220, 0.78);
+      background: rgba(243,234,220,.78);
       backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(16, 37, 29, 0.12);
+      border-bottom: 1px solid rgba(16,37,29,.12);
     }
 
     nav {
@@ -131,7 +123,7 @@
 
     .nav-links a {
       position: relative;
-      opacity: 0.88;
+      opacity: .88;
     }
 
     .nav-links a::after {
@@ -142,7 +134,7 @@
       width: 0%;
       height: 1px;
       background: var(--green);
-      transition: 0.35s;
+      transition: .35s;
     }
 
     .nav-links a:hover::after {
@@ -150,32 +142,53 @@
     }
 
     .language-switch {
+      position: relative;
       display: flex;
       align-items: center;
-      gap: 8px;
+      width: 104px;
+      height: 44px;
+      padding: 5px;
       background: var(--deep);
-      color: var(--cream);
-      padding: 6px;
+      border: 1px solid rgba(198,161,91,.65);
       border-radius: 999px;
-      box-shadow: 0 12px 30px rgba(0,0,0,.14);
+      box-shadow: 0 12px 30px rgba(0,0,0,.18);
+      overflow: hidden;
     }
 
-    .language-switch button {
+    .lang-option {
+      position: relative;
+      z-index: 2;
+      width: 47px;
+      height: 34px;
       border: 0;
-      padding: 8px 13px;
-      border-radius: 999px;
-      cursor: pointer;
       background: transparent;
       color: var(--cream);
+      cursor: pointer;
+      border-radius: 999px;
       font-size: 11px;
-      letter-spacing: 1.7px;
-      font-weight: 800;
-      transition: 0.3s;
+      font-weight: 900;
+      letter-spacing: 1.4px;
+      transition: color .35s ease;
+    }
+
+    .lang-slider {
+      position: absolute;
+      z-index: 1;
+      top: 5px;
+      left: 5px;
+      width: 47px;
+      height: 34px;
+      border-radius: 999px;
+      background: var(--gold);
+      transition: transform .35s cubic-bezier(.4,0,.2,1);
+    }
+
+    body.english .lang-slider {
+      transform: translateX(47px);
     }
 
     body:not(.english) .es-btn,
     body.english .en-btn {
-      background: var(--gold);
       color: var(--deep);
     }
 
@@ -485,72 +498,130 @@
       color: #d8d0c4;
     }
 
-    .case-study {
+    .premium-grid {
       margin-top: 70px;
       display: grid;
-      gap: 85px;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 120px;
+      gap: 22px;
     }
 
-    .case {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 42px;
-      align-items: center;
-      border-top: 1px solid rgba(243,234,220,.18);
-      padding-top: 50px;
-    }
-
-    .case:nth-child(even) {
-      grid-template-columns: .85fr 1.15fr;
-    }
-
-    .case:nth-child(even) .case-media {
-      order: 2;
-    }
-
-    .case-media {
-      height: 560px;
-      overflow: hidden;
+    .project-card {
       position: relative;
+      overflow: hidden;
+      background: #151916;
+      border: 1px solid rgba(243,234,220,.12);
+      cursor: pointer;
+      isolation: isolate;
+      box-shadow: 0 24px 70px rgba(0,0,0,.22);
     }
 
-    .case-media img {
+    .project-card.large {
+      grid-column: span 7;
+      grid-row: span 5;
+    }
+
+    .project-card.tall {
+      grid-column: span 5;
+      grid-row: span 5;
+    }
+
+    .project-card.wide {
+      grid-column: span 6;
+      grid-row: span 4;
+    }
+
+    .project-card.small {
+      grid-column: span 3;
+      grid-row: span 4;
+    }
+
+    .project-card img {
       height: 100%;
-      filter: saturate(.82) contrast(1.05);
-      transition: .8s;
+      filter: saturate(.78) contrast(1.06) brightness(.92);
+      transition: transform 1s ease, filter .8s ease;
     }
 
-    .case:hover .case-media img {
-      transform: scale(1.055);
-      filter: saturate(1) contrast(1.04);
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(11,15,12,.9), rgba(11,15,12,.25), transparent 70%),
+        linear-gradient(to right, rgba(16,37,29,.32), transparent 60%);
+      z-index: 1;
+      opacity: .95;
+      transition: .6s;
     }
 
-    .case-content {
-      padding: 20px 0;
+    .project-card:hover img {
+      transform: scale(1.07);
+      filter: saturate(1) contrast(1.04) brightness(1);
     }
 
-    .case-label {
+    .project-card:hover::before {
+      opacity: .78;
+    }
+
+    .project-content {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 28px;
+      z-index: 2;
+      transform: translateY(8px);
+      transition: .5s;
+    }
+
+    .project-card:hover .project-content {
+      transform: translateY(0);
+    }
+
+    .project-label {
       color: var(--gold);
       text-transform: uppercase;
       letter-spacing: 3px;
-      font-size: 11px;
-      font-weight: 800;
-      margin-bottom: 18px;
+      font-size: 10px;
+      font-weight: 900;
+      margin-bottom: 14px;
     }
 
-    .case h3 {
+    .project-content h3 {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(38px, 4vw, 64px);
-      line-height: .95;
       font-weight: 400;
-      margin-bottom: 22px;
+      font-size: clamp(30px, 3vw, 54px);
+      line-height: .95;
+      margin-bottom: 14px;
     }
 
-    .case p {
-      color: #d8d0c4;
-      font-size: 18px;
-      line-height: 1.7;
-      max-width: 560px;
+    .project-content p {
+      max-width: 520px;
+      color: #e2d9cc;
+      line-height: 1.55;
+      font-size: 15px;
+      opacity: .92;
+    }
+
+    .project-arrow {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      z-index: 2;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(243,234,220,.35);
+      display: grid;
+      place-items: center;
+      color: var(--cream);
+      border-radius: 50%;
+      transform: translateY(-8px);
+      opacity: 0;
+      transition: .45s;
+    }
+
+    .project-card:hover .project-arrow {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .behind {
@@ -770,15 +841,9 @@
 
       .philosophy,
       .process-layout,
-      .case,
-      .case:nth-child(even),
       .collage,
       .trust-inner {
         grid-template-columns: 1fr;
-      }
-
-      .case:nth-child(even) .case-media {
-        order: 0;
       }
 
       .services-grid,
@@ -787,7 +852,6 @@
       }
 
       .portrait-frame img,
-      .case-media,
       .collage-main {
         height: 480px;
       }
@@ -799,6 +863,21 @@
       .sticky-title {
         position: relative;
         top: 0;
+      }
+
+      .premium-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+      }
+
+      .project-card,
+      .project-card.large,
+      .project-card.tall,
+      .project-card.wide,
+      .project-card.small {
+        grid-column: auto;
+        grid-row: auto;
+        height: 440px;
       }
     }
 
@@ -814,10 +893,6 @@
       .brand img {
         width: 48px;
         height: 48px;
-      }
-
-      .language-switch button {
-        padding: 7px 10px;
       }
 
       .hero-inner {
@@ -869,13 +944,26 @@
       }
 
       .portrait-frame img,
-      .case-media,
       .collage-main {
         height: 420px;
       }
 
       .collage-small {
         height: 250px;
+      }
+
+      .project-card,
+      .project-card.large,
+      .project-card.tall,
+      .project-card.wide,
+      .project-card.small {
+        height: 390px;
+      }
+
+      .project-content {
+        left: 22px;
+        right: 22px;
+        bottom: 22px;
       }
     }
   </style>
@@ -897,68 +985,11 @@
         <a href="#contacto"><span data-es>Contacto</span><span data-en>Contact</span></a>
       </div>
 
-      [data-en] {
-  display: none !important;
-}
-
-body.english [data-es] {
-  display: none !important;
-}
-
-body.english [data-en] {
-  display: inline !important;
-}
-
-.language-switch {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 104px;
-  height: 44px;
-  padding: 5px;
-  background: #10251d;
-  border: 1px solid rgba(198, 161, 91, 0.55);
-  border-radius: 999px;
-  box-shadow: 0 12px 30px rgba(0,0,0,.18);
-  overflow: hidden;
-}
-
-.lang-option {
-  position: relative;
-  z-index: 2;
-  width: 47px;
-  height: 34px;
-  border: 0;
-  background: transparent;
-  color: #f3eadc;
-  cursor: pointer;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 1.4px;
-  transition: color .35s ease;
-}
-
-.lang-slider {
-  position: absolute;
-  z-index: 1;
-  top: 5px;
-  left: 5px;
-  width: 47px;
-  height: 34px;
-  border-radius: 999px;
-  background: #c6a15b;
-  transition: transform .35s cubic-bezier(.4, 0, .2, 1);
-}
-
-body.english .lang-slider {
-  transform: translateX(47px);
-}
-
-body:not(.english) .es-btn,
-body.english .en-btn {
-  color: #10251d;
-}
+      <div class="language-switch" aria-label="Language switch">
+        <button class="lang-option es-btn" type="button" onclick="setLanguage('es')">ES</button>
+        <button class="lang-option en-btn" type="button" onclick="setLanguage('en')">EN</button>
+        <span class="lang-slider"></span>
+      </div>
     </nav>
   </header>
 
@@ -1016,10 +1047,7 @@ body.english .en-btn {
       </div>
 
       <div class="reveal">
-        <div class="section-kicker">
-          <span data-es>Studio philosophy</span>
-          <span data-en>Studio philosophy</span>
-        </div>
+        <div class="section-kicker">Studio philosophy</div>
 
         <h2 class="section-title">
           <span data-es>No diseño espacios para tendencias. Diseño para cómo las personas viven.</span>
@@ -1111,10 +1139,7 @@ body.english .en-btn {
     <section id="portfolio" class="portfolio">
       <div class="portfolio-inner">
         <div class="reveal">
-          <div class="section-kicker">
-            <span data-es>Signature portfolio</span>
-            <span data-en>Signature portfolio</span>
-          </div>
+          <div class="section-kicker">Signature portfolio</div>
 
           <h2 class="section-title">
             <span data-es>Proyectos pensados desde la función hasta el detalle.</span>
@@ -1127,59 +1152,52 @@ body.english .en-btn {
           </p>
         </div>
 
-        <div class="case-study">
-          <article class="case reveal">
-            <div class="case-media">
-              <img src="images/project-house.jpg" alt="Vivienda unifamiliar" />
-            </div>
-            <div class="case-content">
-              <div class="case-label">Case 01 · Residential Design</div>
+        <div class="premium-grid">
+          <article class="project-card large reveal">
+            <img src="images/project-house.jpg" alt="Vivienda unifamiliar" />
+            <div class="project-arrow">↗</div>
+            <div class="project-content">
+              <div class="project-label">Case 01 · Residential Design</div>
               <h3><span data-es>Vivienda unifamiliar</span><span data-en>Single-family home</span></h3>
               <p><span data-es>Diseño residencial con volumetría clara, lectura contemporánea y enfoque en confort, ventilación natural y uso familiar.</span><span data-en>Residential design with clear volume, contemporary reading and focus on comfort, natural ventilation and family use.</span></p>
             </div>
           </article>
 
-          <article class="case reveal">
-            <div class="case-media">
-              <img src="images/project-structure.jpg" alt="Documentación estructural" />
-            </div>
-            <div class="case-content">
-              <div class="case-label">Case 02 · Technical Authority</div>
+          <article class="project-card tall reveal">
+            <img src="images/project-structure.jpg" alt="Documentación estructural" />
+            <div class="project-arrow">↗</div>
+            <div class="project-content">
+              <div class="project-label">Case 02 · Technical Authority</div>
               <h3><span data-es>Documentación estructural</span><span data-en>Structural documentation</span></h3>
-              <p><span data-es>Desarrollo de pórticos, vigas, columnas y detalles técnicos para una lectura clara y coordinación constructiva.</span><span data-en>Development of frames, beams, columns and technical details for clear reading and construction coordination.</span></p>
+              <p><span data-es>Desarrollo de pórticos, vigas, columnas y detalles técnicos para coordinación constructiva.</span><span data-en>Frames, beams, columns and technical details for construction coordination.</span></p>
             </div>
           </article>
 
-          <article class="case reveal">
-            <div class="case-media">
-              <img src="images/project-autocad.jpg" alt="AutoCAD y boceto técnico" />
-            </div>
-            <div class="case-content">
-              <div class="case-label">Case 03 · Sketch to Digital</div>
+          <article class="project-card wide reveal">
+            <img src="images/project-autocad.jpg" alt="AutoCAD y boceto técnico" />
+            <div class="project-arrow">↗</div>
+            <div class="project-content">
+              <div class="project-label">Case 03 · Sketch to Digital</div>
               <h3><span data-es>Del boceto al plano digital</span><span data-en>From sketch to digital plan</span></h3>
-              <p><span data-es>Conversión de ideas, levantamientos y anotaciones en documentación digital organizada para revisión y ejecución.</span><span data-en>Conversion of ideas, surveys and annotations into organized digital documentation for review and execution.</span></p>
+              <p><span data-es>Conversión de ideas, levantamientos y anotaciones en documentación digital organizada.</span><span data-en>Turning ideas, surveys and annotations into organized digital documentation.</span></p>
             </div>
           </article>
 
-          <article class="case reveal">
-            <div class="case-media">
-              <img src="images/project-plans.jpg" alt="Proyectos educativos" />
-            </div>
-            <div class="case-content">
-              <div class="case-label">Case 04 · Institutional Work</div>
+          <article class="project-card small reveal">
+            <img src="images/project-plans.jpg" alt="Proyectos educativos" />
+            <div class="project-arrow">↗</div>
+            <div class="project-content">
+              <div class="project-label">Case 04 · Institutional</div>
               <h3><span data-es>Proyectos educativos</span><span data-en>Educational projects</span></h3>
-              <p><span data-es>Desarrollo de planos para pabellones escolares, cubiertas, áreas funcionales y documentación técnica institucional.</span><span data-en>Development of drawings for school pavilions, roofs, functional areas and institutional technical documentation.</span></p>
             </div>
           </article>
 
-          <article class="case reveal">
-            <div class="case-media">
-              <img src="images/project-roof-detail.jpg" alt="Detalle constructivo" />
-            </div>
-            <div class="case-content">
-              <div class="case-label">Case 05 · Construction Detail</div>
+          <article class="project-card small reveal">
+            <img src="images/project-roof-detail.jpg" alt="Detalle constructivo" />
+            <div class="project-arrow">↗</div>
+            <div class="project-content">
+              <div class="project-label">Case 05 · Detail</div>
               <h3><span data-es>Detalle constructivo</span><span data-en>Construction detail</span></h3>
-              <p><span data-es>Soluciones técnicas para conexiones, cubierta, estructura y ejecución sin improvisaciones en obra.</span><span data-en>Technical solutions for connections, roofing, structure and execution without improvisation on site.</span></p>
             </div>
           </article>
         </div>
@@ -1329,9 +1347,7 @@ body.english .en-btn {
             <span data-en>Book consultation</span>
           </a>
 
-          <a class="btn" href="https://www.linkedin.com/in/annarciav" target="_blank" rel="noopener">
-            LinkedIn
-          </a>
+          <a class="btn" href="https://www.linkedin.com/in/annarciav" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
     </section>
@@ -1343,14 +1359,12 @@ body.english .en-btn {
 
   <script>
     function setLanguage(lang) {
-      if (lang === "en") {
-        document.body.classList.add("english");
-        document.documentElement.lang = "en";
-      } else {
-        document.body.classList.remove("english");
-        document.documentElement.lang = "es";
-      }
+      const isEnglish = lang === "en";
+      document.body.classList.toggle("english", isEnglish);
+      document.documentElement.lang = isEnglish ? "en" : "es";
     }
+
+    setLanguage("es");
 
     const revealElements = document.querySelectorAll(".reveal");
 
@@ -1367,18 +1381,5 @@ body.english .en-btn {
 
     revealElements.forEach(el => observer.observe(el));
   </script>
-  <script>
-  function setLanguage(lang) {
-    const isEnglish = lang === "en";
-
-    document.body.classList.toggle("english", isEnglish);
-    document.documentElement.lang = isEnglish ? "en" : "es";
-
-    document.querySelector(".es-btn").classList.toggle("active", !isEnglish);
-    document.querySelector(".en-btn").classList.toggle("active", isEnglish);
-  }
-
-  setLanguage("es");
-</script>
 </body>
 </html>
