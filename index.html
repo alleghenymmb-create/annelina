@@ -4,22 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Annelina Arcia V. | A4 Panamá Arquitectura</title>
-  <meta name="description" content="A4 Panamá Arquitectura. Annelina Arcia V., arquitecta especializada en diseño con intención, desarrollo de proyectos, planos técnicos, AutoCAD y Revit." />
+  <title>A4 Panamá | Annelina Arcia Arquitectura</title>
+
+  <meta name="description" content="A4 Panamá Arquitectura. Annelina Arcia V. Diseño arquitectónico, documentación técnica, AutoCAD, Revit y desarrollo de proyectos." />
 
   <style>
     :root {
-      --cream: #f4f1eb;
+      --cream: #f3eadc;
+      --paper: #fbf7ee;
+      --deep: #10251d;
+      --green: #1f4a38;
+      --sage: #879f8e;
+      --moss: #546f5d;
+      --gold: #c6a15b;
+      --terracotta: #9b5b3e;
+      --black: #0b0f0c;
       --white: #ffffff;
-      --ink: #1d241f;
-      --muted: #7c887f;
-      --sage: #6f897d;
-      --sage-light: #a9b8ae;
-      --stone: #d8d4cb;
-      --paper: #fbfaf7;
-      --gold: #b79a6f;
-      --black: #0e100f;
-      --shadow: rgba(0,0,0,.14);
+      --muted: #6f756d;
+      --shadow: rgba(0, 0, 0, 0.16);
     }
 
     * {
@@ -34,7 +36,7 @@
 
     body {
       background: var(--cream);
-      color: var(--ink);
+      color: var(--deep);
       font-family: Arial, Helvetica, sans-serif;
       overflow-x: hidden;
     }
@@ -51,36 +53,50 @@
     }
 
     ::selection {
-      background: var(--sage);
-      color: white;
+      background: var(--green);
+      color: var(--cream);
     }
 
     [data-en] {
-      display: none;
+      display: none !important;
     }
 
     body.english [data-es] {
-      display: none;
+      display: none !important;
     }
 
     body.english [data-en] {
-      display: inline;
+      display: inline !important;
+    }
+
+    body.english [data-en].block {
+      display: block !important;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(48px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     header {
       position: fixed;
-      top: 0;
-      width: 100%;
+      inset: 0 0 auto 0;
       z-index: 999;
-      background: rgba(244,241,235,.78);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(0,0,0,.08);
+      background: rgba(243, 234, 220, 0.78);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(16, 37, 29, 0.12);
     }
 
     nav {
-      max-width: 1320px;
+      max-width: 1440px;
       margin: auto;
-      padding: 14px 24px;
+      padding: 14px 26px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -93,7 +109,7 @@
       text-transform: uppercase;
       letter-spacing: 3px;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .brand img {
@@ -101,20 +117,21 @@
       height: 54px;
       object-fit: contain;
       border-radius: 50%;
-      background: white;
-      padding: 3px;
+      background: var(--paper);
+      padding: 4px;
     }
 
     .nav-links {
       display: flex;
-      gap: 28px;
+      gap: 30px;
       font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 1.8px;
+      letter-spacing: 2px;
     }
 
     .nav-links a {
       position: relative;
+      opacity: 0.88;
     }
 
     .nav-links a::after {
@@ -124,144 +141,131 @@
       bottom: -7px;
       width: 0%;
       height: 1px;
-      background: var(--ink);
-      transition: .3s;
+      background: var(--green);
+      transition: 0.35s;
     }
 
     .nav-links a:hover::after {
       width: 100%;
     }
 
-    .lang-btn {
-      border: 1px solid var(--ink);
-      background: transparent;
-      padding: 9px 13px;
-      cursor: pointer;
-      font-size: 12px;
-      letter-spacing: 1.5px;
-      transition: .3s;
-    }
-
-    .lang-btn:hover {
-      background: var(--ink);
+    .language-switch {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--deep);
       color: var(--cream);
+      padding: 6px;
+      border-radius: 999px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.14);
     }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(35px);
-      transition: opacity .9s ease, transform .9s ease;
+    .language-switch button {
+      border: 0;
+      padding: 8px 13px;
+      border-radius: 999px;
+      cursor: pointer;
+      background: transparent;
+      color: var(--cream);
+      font-size: 11px;
+      letter-spacing: 1.7px;
+      font-weight: 800;
+      transition: 0.3s;
     }
 
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
+    body:not(.english) .es-btn,
+    body.english .en-btn {
+      background: var(--gold);
+      color: var(--deep);
     }
 
     .hero {
       min-height: 100vh;
       position: relative;
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      align-items: center;
       overflow: hidden;
-      background: linear-gradient(90deg, #f5f3ee 0%, #f5f3ee 45%, #ece8df 100%);
+      background:
+        linear-gradient(90deg, rgba(243,234,220,.98) 0%, rgba(243,234,220,.94) 35%, rgba(243,234,220,.28) 62%, rgba(16,37,29,.1) 100%),
+        radial-gradient(circle at 20% 20%, rgba(198,161,91,.25), transparent 28%),
+        var(--cream);
     }
 
-    .hero::before {
-      content: "";
+    .hero-bg {
       position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        90deg,
-        rgba(245,243,238,.98) 0%,
-        rgba(245,243,238,.92) 35%,
-        rgba(245,243,238,.45) 56%,
-        rgba(245,243,238,0) 75%
-      );
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    .hero-text {
-      position: relative;
-      z-index: 3;
-      padding: 120px 24px 80px;
-      padding-left: max(24px, calc((100vw - 1320px) / 2 + 24px));
-      animation: fadeUp 1s ease forwards;
-    }
-
-    .hero-logo {
-      width: 190px;
-      margin-bottom: 42px;
-    }
-
-    .hero-logo img {
-      object-fit: contain;
-    }
-
-    .eyebrow {
-      color: var(--sage);
-      text-transform: uppercase;
-      letter-spacing: 12px;
-      font-size: 18px;
-      margin-bottom: 22px;
-      font-weight: 500;
-    }
-
-    .hero h1 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(64px, 8vw, 126px);
-      font-weight: 400;
-      line-height: .88;
-      letter-spacing: -5px;
-      color: var(--ink);
-      max-width: 650px;
-    }
-
-    .hero-line {
-      width: 150px;
-      height: 2px;
-      background: var(--sage);
-      margin: 34px 0 28px;
-    }
-
-    .hero p {
-      font-size: 22px;
-      line-height: 1.45;
-      max-width: 520px;
-      color: #303630;
-    }
-
-    .hero-label {
-      display: inline-block;
-      margin-top: 48px;
-      background: rgba(91,113,103,.86);
-      color: white;
-      padding: 15px 24px;
-      text-transform: uppercase;
-      letter-spacing: 10px;
-      font-size: 14px;
-    }
-
-    .hero-image {
-      position: absolute;
-      inset: 0 0 0 39%;
+      inset: 0 0 0 42%;
       z-index: 1;
     }
 
-    .hero-image img {
+    .hero-bg img {
       height: 100%;
       object-position: center;
-      filter: brightness(1.04) contrast(.98) saturate(.92);
-      animation: slowZoom 9s ease forwards;
+      filter: saturate(.85) contrast(1.02) brightness(1.03);
+      animation: slowZoom 10s ease forwards;
+    }
+
+    .hero-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(243,234,220,.9), rgba(243,234,220,.18), rgba(16,37,29,.32)),
+        linear-gradient(to top, rgba(16,37,29,.42), transparent 48%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 3;
+      max-width: 1440px;
+      margin: auto;
+      min-height: 100vh;
+      padding: 130px 26px 70px;
+      display: grid;
+      grid-template-columns: .88fr 1.12fr;
+      align-items: center;
+    }
+
+    .hero-logo {
+      width: 160px;
+      margin-bottom: 42px;
+      filter: drop-shadow(0 18px 24px rgba(0,0,0,.08));
+    }
+
+    .kicker {
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 10px;
+      font-size: 14px;
+      margin-bottom: 22px;
+      font-weight: 800;
+    }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(64px, 9vw, 145px);
+      line-height: .82;
+      letter-spacing: -6px;
+      font-weight: 400;
+      max-width: 780px;
+    }
+
+    .hero-line {
+      width: 160px;
+      height: 2px;
+      background: var(--gold);
+      margin: 34px 0 28px;
+    }
+
+    .hero-copy {
+      max-width: 560px;
+      font-size: 22px;
+      line-height: 1.55;
+      color: #26352e;
     }
 
     .hero-actions {
+      margin-top: 38px;
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-top: 34px;
     }
 
     .btn {
@@ -269,133 +273,124 @@
       align-items: center;
       justify-content: center;
       padding: 15px 22px;
-      border: 1px solid var(--ink);
+      border: 1px solid var(--deep);
       text-transform: uppercase;
       letter-spacing: 1.7px;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
       transition: .35s;
+      cursor: pointer;
     }
 
     .btn.dark {
-      background: var(--ink);
+      background: var(--deep);
       color: var(--cream);
+    }
+
+    .btn.gold {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--deep);
     }
 
     .btn:hover {
       transform: translateY(-4px);
-      box-shadow: 0 18px 38px rgba(0,0,0,.12);
+      box-shadow: 0 20px 45px rgba(0,0,0,.16);
     }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
+    .hero-stamp {
+      position: absolute;
+      right: 34px;
+      bottom: 34px;
+      z-index: 4;
+      color: var(--cream);
+      border: 1px solid rgba(243,234,220,.5);
+      padding: 18px 22px;
+      text-transform: uppercase;
+      letter-spacing: 7px;
+      font-size: 12px;
+      background: rgba(16,37,29,.42);
+      backdrop-filter: blur(12px);
     }
 
     @keyframes slowZoom {
-      from { transform: scale(1.05); }
+      from { transform: scale(1.08); }
       to { transform: scale(1); }
     }
 
     section {
-      max-width: 1320px;
+      max-width: 1440px;
       margin: auto;
-      padding: 110px 24px;
+      padding: 125px 26px;
     }
 
     .section-kicker {
-      color: var(--sage);
+      color: var(--terracotta);
       text-transform: uppercase;
       letter-spacing: 4px;
       font-size: 12px;
+      font-weight: 800;
       margin-bottom: 18px;
-      font-weight: 700;
     }
 
     .section-title {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(44px, 6vw, 92px);
+      font-size: clamp(44px, 6vw, 96px);
       font-weight: 400;
       line-height: .9;
       letter-spacing: -4px;
-      margin-bottom: 28px;
-      color: var(--ink);
+      margin-bottom: 30px;
     }
 
     .section-copy {
-      max-width: 780px;
+      max-width: 820px;
       font-size: 20px;
-      line-height: 1.65;
-      color: #3f423d;
+      line-height: 1.7;
+      color: #3c463f;
     }
 
-    .profile {
+    .philosophy {
       display: grid;
-      grid-template-columns: .82fr 1.18fr;
-      gap: 70px;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 80px;
       align-items: center;
     }
 
-    .profile-card {
+    .portrait-frame {
+      position: relative;
       background: var(--paper);
-      padding: 16px;
-      box-shadow: 0 28px 70px var(--shadow);
-      transform: rotate(-1.2deg);
+      padding: 18px;
+      box-shadow: 0 34px 90px var(--shadow);
     }
 
-    .profile-card img {
-      height: 560px;
+    .portrait-frame::before {
+      content: "";
+      position: absolute;
+      inset: -18px 34px 34px -18px;
+      border: 1px solid var(--gold);
+      z-index: -1;
     }
 
-    .stats {
-      margin-top: 38px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+    .portrait-frame img {
+      height: 620px;
     }
 
-    .stat {
-      border-top: 1px solid rgba(0,0,0,.22);
-      padding-top: 18px;
-    }
-
-    .stat strong {
-      display: block;
+    .signature-line {
+      margin-top: 35px;
+      padding-left: 22px;
+      border-left: 3px solid var(--gold);
       font-family: Georgia, "Times New Roman", serif;
-      font-weight: 400;
-      font-size: 34px;
+      font-size: 32px;
+      line-height: 1.2;
+      color: var(--green);
+      max-width: 700px;
     }
 
-    .stat span {
-      display: block;
-      margin-top: 7px;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--muted);
-    }
-
-    .tags {
-      margin-top: 32px;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .tag {
-      background: var(--paper);
-      border: 1px solid rgba(0,0,0,.14);
-      padding: 10px 13px;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      font-size: 12px;
-    }
-
-    .editorial-band {
+    .editorial-strip {
       max-width: none;
-      background: var(--ink);
+      background: var(--deep);
       color: var(--cream);
-      padding: 24px 0;
+      padding: 26px 0;
       overflow: hidden;
     }
 
@@ -407,9 +402,9 @@
 
     .marquee span {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 34px;
-      margin-right: 60px;
+      font-size: 36px;
       white-space: nowrap;
+      margin-right: 64px;
       opacity: .95;
     }
 
@@ -418,114 +413,68 @@
       to { transform: translateX(-50%); }
     }
 
-    .process-intro {
-      max-width: 950px;
-      margin-bottom: 70px;
-    }
-
-    .story {
+    .process-layout {
       display: grid;
-      gap: 88px;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 70px;
+      align-items: start;
     }
 
-    .story-item {
+    .sticky-title {
+      position: sticky;
+      top: 120px;
+    }
+
+    .process-steps {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 44px;
-      align-items: center;
+      gap: 20px;
     }
 
-    .story-item:nth-child(even) .note {
-      order: 2;
-    }
-
-    .note {
+    .step {
       background: var(--paper);
-      padding: clamp(34px, 5vw, 58px);
-      box-shadow: 0 28px 75px rgba(0,0,0,.12);
-      position: relative;
-      transform: rotate(-1deg);
+      padding: 38px;
+      border: 1px solid rgba(16,37,29,.12);
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 28px;
+      transition: .35s;
     }
 
-    .note::before {
-      content: "";
-      position: absolute;
-      top: -15px;
-      left: 34px;
-      width: 95px;
-      height: 30px;
-      background: rgba(183,154,111,.42);
-      transform: rotate(-6deg);
+    .step:hover {
+      transform: translateX(10px);
+      box-shadow: 0 22px 60px rgba(0,0,0,.1);
+      border-color: var(--gold);
     }
 
-    .note small {
-      display: block;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 12px;
-      margin-bottom: 18px;
-      font-weight: 700;
-    }
-
-    .note h3 {
+    .step-number {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(38px, 5vw, 66px);
-      line-height: .92;
+      font-size: 48px;
+      color: var(--gold);
+    }
+
+    .step h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 38px;
       font-weight: 400;
-      letter-spacing: -2px;
-      margin-bottom: 24px;
+      margin-bottom: 10px;
     }
 
-    .note p,
-    .note li {
-      font-size: 21px;
-      line-height: 1.55;
-      color: #343630;
-    }
-
-    .note ul {
-      padding-left: 22px;
-    }
-
-    .note strong {
-      display: block;
-      margin-top: 24px;
-      font-size: 25px;
-      color: var(--ink);
-    }
-
-    .story-img {
-      height: 570px;
-      overflow: hidden;
-      box-shadow: 0 26px 65px rgba(0,0,0,.14);
-    }
-
-    .story-img img {
-      height: 100%;
-      filter: grayscale(100%) contrast(1.05);
-      transition: .7s;
-    }
-
-    .story-img:hover img {
-      transform: scale(1.05);
-      filter: grayscale(20%) contrast(1.03);
+    .step p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #4a514b;
     }
 
     .portfolio {
       max-width: none;
       background: var(--black);
       color: var(--cream);
-      padding: 120px 24px;
+      padding: 130px 26px;
     }
 
     .portfolio-inner {
-      max-width: 1320px;
+      max-width: 1440px;
       margin: auto;
-    }
-
-    .portfolio .section-kicker {
-      color: var(--gold);
     }
 
     .portfolio .section-title {
@@ -533,148 +482,249 @@
     }
 
     .portfolio .section-copy {
-      color: #d6d0c7;
+      color: #d8d0c4;
     }
 
-    .case-grid {
-      margin-top: 56px;
+    .case-study {
+      margin-top: 70px;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+      gap: 85px;
     }
 
-    .case-card {
-      background: #181a17;
-      border: 1px solid rgba(255,255,255,.09);
+    .case {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 42px;
+      align-items: center;
+      border-top: 1px solid rgba(243,234,220,.18);
+      padding-top: 50px;
+    }
+
+    .case:nth-child(even) {
+      grid-template-columns: .85fr 1.15fr;
+    }
+
+    .case:nth-child(even) .case-media {
+      order: 2;
+    }
+
+    .case-media {
+      height: 560px;
       overflow: hidden;
-      transition: .45s;
+      position: relative;
     }
 
-    .case-card:hover {
-      transform: translateY(-10px);
-      border-color: rgba(255,255,255,.28);
-    }
-
-    .case-img {
-      height: 305px;
-      overflow: hidden;
-    }
-
-    .case-img img {
+    .case-media img {
       height: 100%;
-      filter: grayscale(16%) contrast(1.03);
-      transition: .7s;
+      filter: saturate(.82) contrast(1.05);
+      transition: .8s;
     }
 
-    .case-card:hover img {
-      transform: scale(1.06);
-      filter: grayscale(0%);
+    .case:hover .case-media img {
+      transform: scale(1.055);
+      filter: saturate(1) contrast(1.04);
     }
 
     .case-content {
-      padding: 28px;
+      padding: 20px 0;
     }
 
-    .case-number {
+    .case-label {
       color: var(--gold);
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       font-size: 11px;
-      margin-bottom: 17px;
+      font-weight: 800;
+      margin-bottom: 18px;
     }
 
-    .case-content h3 {
+    .case h3 {
       font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(38px, 4vw, 64px);
+      line-height: .95;
       font-weight: 400;
-      line-height: 1;
-      font-size: 31px;
-      margin-bottom: 16px;
+      margin-bottom: 22px;
     }
 
-    .case-content p {
-      color: #d0c9bd;
-      line-height: 1.6;
-      font-size: 15px;
+    .case p {
+      color: #d8d0c4;
+      font-size: 18px;
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    .behind {
+      background:
+        linear-gradient(135deg, rgba(31,74,56,.08), transparent 40%),
+        var(--cream);
+    }
+
+    .collage {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .collage-main {
+      height: 650px;
+      overflow: hidden;
+      box-shadow: 0 28px 70px var(--shadow);
+    }
+
+    .collage-main img {
+      height: 100%;
+    }
+
+    .collage-side {
+      display: grid;
+      gap: 22px;
+    }
+
+    .collage-small {
+      height: 314px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,.12);
+    }
+
+    .collage-small img {
+      height: 100%;
     }
 
     .services-grid {
+      margin-top: 58px;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      margin-top: 52px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
     }
 
     .service {
       background: var(--paper);
-      border: 1px solid rgba(0,0,0,.1);
-      padding: 34px 28px;
-      min-height: 260px;
+      min-height: 270px;
+      padding: 36px 30px;
+      border: 1px solid rgba(16,37,29,.12);
       transition: .35s;
     }
 
     .service:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 24px 60px rgba(0,0,0,.12);
+      transform: translateY(-10px);
+      background: var(--deep);
+      color: var(--cream);
+      box-shadow: 0 28px 70px rgba(0,0,0,.16);
     }
 
     .service span {
-      display: block;
-      color: var(--sage);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 42px;
-      margin-bottom: 24px;
+      color: var(--gold);
+      font-size: 44px;
+      display: block;
+      margin-bottom: 25px;
     }
 
     .service h3 {
-      font-size: 22px;
+      font-size: 23px;
       margin-bottom: 14px;
     }
 
     .service p {
-      line-height: 1.55;
-      color: #4b4d47;
+      line-height: 1.6;
+      color: #4d554e;
     }
 
-    .cta-section {
-      padding: 120px 24px;
+    .service:hover p {
+      color: #d8d0c4;
+    }
+
+    .trust {
+      max-width: none;
+      background: var(--green);
+      color: var(--cream);
+      padding: 100px 26px;
+    }
+
+    .trust-inner {
+      max-width: 1440px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .trust .section-title {
+      color: var(--cream);
+    }
+
+    .trust-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .trust-item {
+      border: 1px solid rgba(243,234,220,.25);
+      padding: 28px;
+      background: rgba(255,255,255,.04);
+    }
+
+    .trust-item strong {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 8px;
+      color: var(--gold);
+    }
+
+    .trust-item span {
+      line-height: 1.5;
+      color: #e7ded0;
+    }
+
+    .cta {
+      padding: 130px 26px;
     }
 
     .cta-box {
-      background: var(--sage-light);
-      padding: clamp(50px, 8vw, 90px);
-      text-align: center;
       position: relative;
       overflow: hidden;
+      text-align: center;
+      padding: clamp(58px, 8vw, 100px);
+      background:
+        linear-gradient(135deg, rgba(198,161,91,.22), transparent 42%),
+        var(--sage);
+      color: var(--deep);
     }
 
     .cta-box::before {
       content: "A4";
       position: absolute;
-      right: -35px;
-      top: -95px;
+      right: -45px;
+      top: -105px;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 360px;
-      color: rgba(255,255,255,.15);
+      font-size: 390px;
+      color: rgba(255,255,255,.18);
       line-height: 1;
     }
 
     .cta-box h2 {
       position: relative;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(46px, 7vw, 98px);
-      line-height: .9;
+      font-size: clamp(48px, 7vw, 105px);
+      line-height: .88;
       font-weight: 400;
-      letter-spacing: -4px;
-      max-width: 950px;
-      margin: 0 auto 26px;
+      letter-spacing: -5px;
+      max-width: 980px;
+      margin: 0 auto 28px;
     }
 
     .cta-box p {
       position: relative;
       font-size: 20px;
-      line-height: 1.6;
-      max-width: 720px;
-      margin: 0 auto 34px;
+      line-height: 1.65;
+      max-width: 750px;
+      margin: 0 auto 36px;
     }
 
     .cta-box .hero-actions {
@@ -686,71 +736,69 @@
       background: var(--black);
       color: var(--cream);
       text-align: center;
-      padding: 34px 24px;
+      padding: 34px 26px;
       text-transform: uppercase;
       letter-spacing: 2px;
       font-size: 12px;
     }
 
     @media (max-width: 980px) {
-      .hero {
-        display: block;
-        min-height: auto;
-      }
-
-      .hero::before {
-        background: linear-gradient(
-          to bottom,
-          rgba(245,243,238,.98) 0%,
-          rgba(245,243,238,.86) 52%,
-          rgba(245,243,238,.4) 100%
-        );
-      }
-
-      .hero-text {
-        padding: 110px 22px 480px;
-      }
-
-      .hero-image {
-        inset: auto 0 0 0;
-        height: 560px;
-      }
-
-      .hero-logo {
-        width: 150px;
-      }
-
-      .eyebrow {
-        letter-spacing: 7px;
-        font-size: 13px;
-      }
-
-      .hero h1 {
-        letter-spacing: -3px;
-      }
-
-      .profile,
-      .story-item {
-        grid-template-columns: 1fr;
-      }
-
-      .story-item:nth-child(even) .note {
-        order: 0;
-      }
-
-      .case-grid,
-      .services-grid,
-      .stats {
-        grid-template-columns: 1fr;
-      }
-
       .nav-links {
         display: none;
       }
 
-      .profile-card img,
-      .story-img {
-        height: 460px;
+      .hero-inner {
+        display: block;
+        padding-top: 115px;
+        padding-bottom: 500px;
+      }
+
+      .hero-bg {
+        inset: auto 0 0 0;
+        height: 560px;
+      }
+
+      .hero-bg::after {
+        background:
+          linear-gradient(to bottom, rgba(243,234,220,.4), rgba(16,37,29,.38)),
+          linear-gradient(to top, rgba(16,37,29,.55), transparent 65%);
+      }
+
+      h1 {
+        letter-spacing: -3px;
+      }
+
+      .philosophy,
+      .process-layout,
+      .case,
+      .case:nth-child(even),
+      .collage,
+      .trust-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .case:nth-child(even) .case-media {
+        order: 0;
+      }
+
+      .services-grid,
+      .trust-list {
+        grid-template-columns: 1fr;
+      }
+
+      .portrait-frame img,
+      .case-media,
+      .collage-main {
+        height: 480px;
+      }
+
+      .collage-small {
+        height: 300px;
+      }
+
+      .sticky-title {
+        position: relative;
+        top: 0;
       }
     }
 
@@ -768,52 +816,65 @@
         height: 48px;
       }
 
-      .hero-text {
-        padding: 100px 18px 430px;
+      .language-switch button {
+        padding: 7px 10px;
       }
 
-      .hero-image {
+      .hero-inner {
+        padding: 105px 18px 430px;
+      }
+
+      .hero-bg {
         height: 500px;
       }
 
       .hero-logo {
-        width: 130px;
-        margin-bottom: 30px;
+        width: 125px;
+        margin-bottom: 34px;
       }
 
-      .hero h1,
+      .kicker {
+        font-size: 12px;
+        letter-spacing: 6px;
+      }
+
+      .hero-copy,
+      .section-copy {
+        font-size: 18px;
+      }
+
+      .hero-stamp {
+        left: 18px;
+        right: auto;
+        bottom: 18px;
+        letter-spacing: 4px;
+        font-size: 10px;
+      }
+
+      section,
+      .portfolio,
+      .trust,
+      .cta {
+        padding: 85px 18px;
+      }
+
       .section-title,
       .cta-box h2 {
         letter-spacing: -2px;
       }
 
-      .hero p,
-      .section-copy,
-      .note p,
-      .note li {
-        font-size: 18px;
+      .step {
+        grid-template-columns: 1fr;
+        padding: 30px;
       }
 
-      .hero-label {
-        letter-spacing: 5px;
-        font-size: 11px;
-        padding: 13px 16px;
-      }
-
-      section {
-        padding: 85px 18px;
-      }
-
-      .note {
-        padding: 34px 24px;
-      }
-
-      .profile-card img,
-      .story-img {
+      .portrait-frame img,
+      .case-media,
+      .collage-main {
         height: 420px;
       }
 
-      .case-img {
+      .collage-small {
         height: 250px;
       }
     }
@@ -823,242 +884,167 @@
 <body>
   <header>
     <nav>
-      <a href="#inicio" class="brand">
+      <a class="brand" href="#inicio">
         <img src="images/logo.jpg" alt="A4 Panamá Arquitectura logo" />
         <span>A4 Panamá</span>
       </a>
 
       <div class="nav-links">
-        <a href="#perfil"><span data-es>Perfil</span><span data-en>Profile</span></a>
+        <a href="#filosofia"><span data-es>Filosofía</span><span data-en>Philosophy</span></a>
         <a href="#proceso"><span data-es>Proceso</span><span data-en>Process</span></a>
         <a href="#portfolio">Portfolio</a>
         <a href="#servicios"><span data-es>Servicios</span><span data-en>Services</span></a>
         <a href="#contacto"><span data-es>Contacto</span><span data-en>Contact</span></a>
       </div>
 
-      <button class="lang-btn" onclick="toggleLanguage()">ES / EN</button>
+      <div class="language-switch">
+        <button class="es-btn" onclick="setLanguage('es')">ES</button>
+        <button class="en-btn" onclick="setLanguage('en')">EN</button>
+      </div>
     </nav>
   </header>
 
   <main id="inicio">
     <section class="hero">
-      <div class="hero-text">
-        <div class="hero-logo">
-          <img src="images/logo.jpg" alt="A4 Panamá Arquitectura" />
-        </div>
+      <div class="hero-bg">
+        <img src="images/hero-annelina.jpg" alt="Annelina Arcia arquitecta con planos" />
+      </div>
 
-        <div class="eyebrow">
-          <span data-es>Arquitecta</span>
-          <span data-en>Architect</span>
-        </div>
+      <div class="hero-inner">
+        <div class="reveal">
+          <div class="hero-logo">
+            <img src="images/logo.jpg" alt="A4 Panamá Arquitectura" />
+          </div>
 
-        <h1>
-          <span data-es>Diseño con intención.</span>
-          <span data-en>Design with intention.</span>
-        </h1>
+          <div class="kicker">
+            <span data-es>Arquitecta</span>
+            <span data-en>Architect</span>
+          </div>
 
-        <div class="hero-line"></div>
+          <h1>
+            <span data-es>Diseño con intención.</span>
+            <span data-en>Design with intention.</span>
+          </h1>
 
-        <p>
-          <span data-es>Ayudo a transformar espacios confusos en lugares claros, funcionales y bien pensados.</span>
-          <span data-en>I help transform confusing spaces into clear, functional and well-planned places.</span>
-        </p>
+          <div class="hero-line"></div>
 
-        <div class="hero-actions">
-          <a href="#contacto" class="btn dark">
-            <span data-es>Agenda una asesoría</span>
-            <span data-en>Book a consultation</span>
-          </a>
-          <a href="#portfolio" class="btn">
-            <span data-es>Ver portfolio</span>
-            <span data-en>View portfolio</span>
-          </a>
-        </div>
+          <p class="hero-copy">
+            <span data-es>Claridad antes de construir. Espacios pensados para vivir, funcionar y durar.</span>
+            <span data-en>Clarity before construction. Spaces designed to live, function and last.</span>
+          </p>
 
-        <div class="hero-label">
-          <span data-es>Desarrollo de proyectos</span>
-          <span data-en>Project development</span>
+          <div class="hero-actions">
+            <a class="btn dark" href="#contacto">
+              <span data-es>Agenda una asesoría</span>
+              <span data-en>Book consultation</span>
+            </a>
+            <a class="btn gold" href="#portfolio">
+              <span data-es>Ver portfolio</span>
+              <span data-en>View portfolio</span>
+            </a>
+          </div>
         </div>
       </div>
 
-      <div class="hero-image">
-        <img src="images/hero-annelina.jpg" alt="Annelina Arcia arquitecta con planos" />
+      <div class="hero-stamp">
+        <span data-es>Desarrollo de proyectos</span>
+        <span data-en>Project development</span>
       </div>
     </section>
 
-    <section id="perfil" class="profile">
-      <div class="profile-card reveal">
+    <section id="filosofia" class="philosophy">
+      <div class="portrait-frame reveal">
         <img src="images/profile-annelina.jpg" alt="Annelina Arcia revisando planos" />
       </div>
 
       <div class="reveal">
         <div class="section-kicker">
-          <span data-es>Perfil profesional</span>
-          <span data-en>Professional profile</span>
+          <span data-es>Studio philosophy</span>
+          <span data-en>Studio philosophy</span>
         </div>
 
         <h2 class="section-title">
-          <span data-es>Arquitectura clara, técnica y humana.</span>
-          <span data-en>Clear, technical and human architecture.</span>
+          <span data-es>No diseño espacios para tendencias. Diseño para cómo las personas viven.</span>
+          <span data-en>I do not design spaces for trends. I design for how people live.</span>
         </h2>
 
         <p class="section-copy">
-          <span data-es>
-            Soy Annelina Arcia, arquitecta enfocada en desarrollo de proyectos, dibujo técnico y documentación arquitectónica. Mi trabajo combina sensibilidad espacial, orden técnico y comunicación clara para que cada decisión tenga propósito desde el inicio.
-          </span>
-          <span data-en>
-            I’m Annelina Arcia, an architect focused on project development, technical drafting and architectural documentation. My work combines spatial sensitivity, technical order and clear communication so every decision has purpose from the beginning.
-          </span>
+          <span data-es>Cada proyecto empieza entendiendo el lugar, las necesidades reales y las decisiones que deben tomarse antes de construir. El objetivo es crear claridad: en la idea, en el plano y en la ejecución.</span>
+          <span data-en>Every project begins by understanding the place, real needs and the decisions that must be made before building. The goal is to create clarity: in the idea, in the drawing and in execution.</span>
         </p>
 
-        <div class="stats">
-          <div class="stat">
-            <strong>AutoCAD</strong>
-            <span>Documentación técnica</span>
-          </div>
-          <div class="stat">
-            <strong>Revit</strong>
-            <span>Modelado y desarrollo</span>
-          </div>
-          <div class="stat">
-            <strong>A4</strong>
-            <span>Arquitectura Panamá</span>
-          </div>
-        </div>
-
-        <div class="tags">
-          <span class="tag">Diseño residencial</span>
-          <span class="tag">Planos técnicos</span>
-          <span class="tag">Remodelaciones</span>
-          <span class="tag">Renders 3D</span>
-          <span class="tag">Gestión de obra</span>
+        <div class="signature-line">
+          <span data-es>Claridad antes de construir. Decisiones que duran.</span>
+          <span data-en>Clarity before construction. Decisions that last.</span>
         </div>
       </div>
     </section>
 
-    <section class="editorial-band">
+    <section class="editorial-strip">
       <div class="marquee">
-        <span>Diseño arquitectónico</span>
+        <span>Arquitectura tropical</span>
+        <span>Diseño residencial</span>
         <span>Planos técnicos</span>
         <span>AutoCAD</span>
         <span>Revit</span>
-        <span>Gestión de proyectos</span>
-        <span>Diseño con intención</span>
-        <span>Diseño arquitectónico</span>
+        <span>Claridad espacial</span>
+        <span>Arquitectura tropical</span>
+        <span>Diseño residencial</span>
         <span>Planos técnicos</span>
         <span>AutoCAD</span>
         <span>Revit</span>
-        <span>Gestión de proyectos</span>
-        <span>Diseño con intención</span>
+        <span>Claridad espacial</span>
       </div>
     </section>
 
-    <section id="proceso">
-      <div class="process-intro reveal">
+    <section id="proceso" class="process-layout">
+      <div class="sticky-title reveal">
         <div class="section-kicker">
-          <span data-es>Proceso</span>
-          <span data-en>Process</span>
+          <span data-es>Proceso como diseño</span>
+          <span data-en>Process as design</span>
         </div>
 
         <h2 class="section-title">
-          <span data-es>Un buen proyecto empieza con claridad.</span>
-          <span data-en>A good project starts with clarity.</span>
+          <span data-es>Un proceso claro evita decisiones costosas.</span>
+          <span data-en>A clear process avoids costly decisions.</span>
         </h2>
 
         <p class="section-copy">
-          <span data-es>
-            Antes de construir, remodelar o invertir, necesitas entender tu espacio, tus necesidades y las decisiones que harán que el proyecto avance sin improvisaciones.
-          </span>
-          <span data-en>
-            Before building, remodeling or investing, you need to understand your space, your needs and the decisions that will help the project move forward without improvisation.
-          </span>
+          <span data-es>El diseño no empieza con una imagen bonita. Empieza con preguntas correctas, lectura del espacio y documentación que permite avanzar con seguridad.</span>
+          <span data-en>Design does not begin with a beautiful image. It begins with the right questions, reading the space and documentation that allows progress with confidence.</span>
         </p>
       </div>
 
-      <div class="story">
-        <article class="story-item reveal">
-          <div class="note">
-            <small>Primero</small>
-            <h3>
-              <span data-es>Qué problemas resuelvo</span>
-              <span data-en>What problems I solve</span>
-            </h3>
-            <p>
-              <span data-es>Ayudo a transformar espacios confusos en lugares bien pensados, funcionales y habitables.</span>
-              <span data-en>I help transform confusing spaces into well-planned, functional and livable places.</span>
-            </p>
-            <strong>
-              <span data-es>Menos confusión, mejores decisiones.</span>
-              <span data-en>Less confusion, better decisions.</span>
-            </strong>
-          </div>
-
-          <div class="story-img">
-            <img src="images/project-plans.jpg" alt="Planos arquitectónicos" />
+      <div class="process-steps">
+        <article class="step reveal">
+          <div class="step-number">01</div>
+          <div>
+            <h3><span data-es>Entender</span><span data-en>Understand</span></h3>
+            <p><span data-es>Visita, conversación, necesidades, contexto y lectura real del espacio.</span><span data-en>Site visit, conversation, needs, context and real reading of the space.</span></p>
           </div>
         </article>
 
-        <article class="story-item reveal">
-          <div class="note">
-            <small>Segundo</small>
-            <h3>
-              <span data-es>A quién ayudo</span>
-              <span data-en>Who I help</span>
-            </h3>
-            <p>
-              <span data-es>Trabajo con personas que quieren remodelar, construir o rediseñar su espacio y buscan orden, claridad y buenas decisiones desde el inicio.</span>
-              <span data-en>I work with people who want to remodel, build or redesign their space and need order, clarity and better decisions from the beginning.</span>
-            </p>
-            <strong>
-              <span data-es>Ser clara genera confianza.</span>
-              <span data-en>Clarity builds trust.</span>
-            </strong>
-          </div>
-
-          <div class="story-img">
-            <img src="images/project-house.jpg" alt="Render de vivienda unifamiliar" />
+        <article class="step reveal">
+          <div class="step-number">02</div>
+          <div>
+            <h3><span data-es>Definir</span><span data-en>Define</span></h3>
+            <p><span data-es>Distribución, concepto, estrategia de diseño y toma de decisiones iniciales.</span><span data-en>Layout, concept, design strategy and initial decision-making.</span></p>
           </div>
         </article>
 
-        <article class="story-item reveal">
-          <div class="note">
-            <small>Tercero</small>
-            <h3>
-              <span data-es>Cómo lo hago</span>
-              <span data-en>How I work</span>
-            </h3>
-            <ul>
-              <li><span data-es>Visita al sitio y entrevista inicial.</span><span data-en>Site visit and initial interview.</span></li>
-              <li><span data-es>Desarrollo de anteproyecto.</span><span data-en>Concept design development.</span></li>
-              <li><span data-es>Propuesta 3D y visualización.</span><span data-en>3D proposal and visualization.</span></li>
-              <li><span data-es>Planos técnicos listos para revisión o ejecución.</span><span data-en>Technical drawings ready for review or execution.</span></li>
-            </ul>
-          </div>
-
-          <div class="story-img">
-            <img src="images/project-autocad.jpg" alt="AutoCAD y dibujo técnico" />
+        <article class="step reveal">
+          <div class="step-number">03</div>
+          <div>
+            <h3><span data-es>Visualizar</span><span data-en>Visualize</span></h3>
+            <p><span data-es>Propuesta 3D, renders, mood visual y claridad antes de ejecutar.</span><span data-en>3D proposal, renders, visual mood and clarity before execution.</span></p>
           </div>
         </article>
 
-        <article class="story-item reveal">
-          <div class="note">
-            <small>Resultado</small>
-            <h3>
-              <span data-es>Un proyecto listo para avanzar</span>
-              <span data-en>A project ready to move forward</span>
-            </h3>
-            <p>
-              <span data-es>El resultado es un proyecto claro, bien pensado y preparado para ejecutarse sin dudas ni improvisaciones.</span>
-              <span data-en>The result is a clear, well-planned project prepared to be executed without doubts or improvisation.</span>
-            </p>
-            <strong>
-              <span data-es>Cuando el proceso es claro, todo fluye.</span>
-              <span data-en>When the process is clear, everything flows.</span>
-            </strong>
-          </div>
-
-          <div class="story-img">
-            <img src="images/project-roof-detail.jpg" alt="Detalle constructivo" />
+        <article class="step reveal">
+          <div class="step-number">04</div>
+          <div>
+            <h3><span data-es>Ejecutar</span><span data-en>Execute</span></h3>
+            <p><span data-es>Planos técnicos, detalles y documentación lista para revisión o construcción.</span><span data-en>Technical drawings, details and documentation ready for review or construction.</span></p>
           </div>
         </article>
       </div>
@@ -1068,127 +1054,109 @@
       <div class="portfolio-inner">
         <div class="reveal">
           <div class="section-kicker">
-            <span data-es>Portfolio seleccionado</span>
-            <span data-en>Selected portfolio</span>
+            <span data-es>Signature portfolio</span>
+            <span data-en>Signature portfolio</span>
           </div>
 
           <h2 class="section-title">
-            <span data-es>Proyectos que elevan claridad, función y ejecución.</span>
-            <span data-en>Projects that elevate clarity, function and execution.</span>
+            <span data-es>Proyectos pensados desde la función hasta el detalle.</span>
+            <span data-en>Projects considered from function to detail.</span>
           </h2>
 
           <p class="section-copy">
-            <span data-es>
-              Cada caso comunica una parte del proceso arquitectónico: diseño, documentación técnica, visualización, coordinación y desarrollo ejecutivo.
-            </span>
-            <span data-en>
-              Each case communicates a part of the architectural process: design, technical documentation, visualization, coordination and executive development.
-            </span>
+            <span data-es>Cada caso muestra una parte del proceso: concepto, visualización, documentación técnica, coordinación y desarrollo ejecutivo.</span>
+            <span data-en>Each case shows part of the process: concept, visualization, technical documentation, coordination and executive development.</span>
           </p>
         </div>
 
-        <div class="case-grid">
-          <article class="case-card reveal">
-            <div class="case-img">
+        <div class="case-study">
+          <article class="case reveal">
+            <div class="case-media">
               <img src="images/project-house.jpg" alt="Vivienda unifamiliar" />
             </div>
             <div class="case-content">
-              <div class="case-number">Case 01 · Residencial</div>
-              <h3>
-                <span data-es>Vivienda unifamiliar</span>
-                <span data-en>Single-family home</span>
-              </h3>
-              <p>
-                <span data-es>Diseño residencial optimizado para confort, ventilación natural, volumetría clara y lectura contemporánea.</span>
-                <span data-en>Residential design optimized for comfort, natural ventilation, clear volume and contemporary reading.</span>
-              </p>
+              <div class="case-label">Case 01 · Residential Design</div>
+              <h3><span data-es>Vivienda unifamiliar</span><span data-en>Single-family home</span></h3>
+              <p><span data-es>Diseño residencial con volumetría clara, lectura contemporánea y enfoque en confort, ventilación natural y uso familiar.</span><span data-en>Residential design with clear volume, contemporary reading and focus on comfort, natural ventilation and family use.</span></p>
             </div>
           </article>
 
-          <article class="case-card reveal">
-            <div class="case-img">
-              <img src="images/project-structure.jpg" alt="Pórticos de vigas" />
+          <article class="case reveal">
+            <div class="case-media">
+              <img src="images/project-structure.jpg" alt="Documentación estructural" />
             </div>
             <div class="case-content">
-              <div class="case-number">Case 02 · Técnico</div>
-              <h3>
-                <span data-es>Documentación estructural</span>
-                <span data-en>Structural documentation</span>
-              </h3>
-              <p>
-                <span data-es>Desarrollo de vigas, columnas, detalles y lectura técnica para coordinación constructiva.</span>
-                <span data-en>Development of beams, columns, details and technical reading for construction coordination.</span>
-              </p>
+              <div class="case-label">Case 02 · Technical Authority</div>
+              <h3><span data-es>Documentación estructural</span><span data-en>Structural documentation</span></h3>
+              <p><span data-es>Desarrollo de pórticos, vigas, columnas y detalles técnicos para una lectura clara y coordinación constructiva.</span><span data-en>Development of frames, beams, columns and technical details for clear reading and construction coordination.</span></p>
             </div>
           </article>
 
-          <article class="case-card reveal">
-            <div class="case-img">
-              <img src="images/project-autocad.jpg" alt="AutoCAD" />
+          <article class="case reveal">
+            <div class="case-media">
+              <img src="images/project-autocad.jpg" alt="AutoCAD y boceto técnico" />
             </div>
             <div class="case-content">
-              <div class="case-number">Case 03 · Digitalización</div>
-              <h3>
-                <span data-es>Del boceto al plano digital</span>
-                <span data-en>From sketch to digital plan</span>
-              </h3>
-              <p>
-                <span data-es>Conversión de ideas y anotaciones técnicas en planos organizados para revisión y ejecución.</span>
-                <span data-en>Conversion of ideas and technical annotations into organized drawings for review and execution.</span>
-              </p>
+              <div class="case-label">Case 03 · Sketch to Digital</div>
+              <h3><span data-es>Del boceto al plano digital</span><span data-en>From sketch to digital plan</span></h3>
+              <p><span data-es>Conversión de ideas, levantamientos y anotaciones en documentación digital organizada para revisión y ejecución.</span><span data-en>Conversion of ideas, surveys and annotations into organized digital documentation for review and execution.</span></p>
             </div>
           </article>
 
-          <article class="case-card reveal">
-            <div class="case-img">
-              <img src="images/project-plans.jpg" alt="Planos impresos" />
+          <article class="case reveal">
+            <div class="case-media">
+              <img src="images/project-plans.jpg" alt="Proyectos educativos" />
             </div>
             <div class="case-content">
-              <div class="case-number">Case 04 · Institucional</div>
-              <h3>
-                <span data-es>Proyectos educativos</span>
-                <span data-en>Educational projects</span>
-              </h3>
-              <p>
-                <span data-es>Desarrollo de planos para pabellones escolares, cubiertas, áreas funcionales y revisión técnica.</span>
-                <span data-en>Drawings for school pavilions, roofs, functional areas and technical review.</span>
-              </p>
+              <div class="case-label">Case 04 · Institutional Work</div>
+              <h3><span data-es>Proyectos educativos</span><span data-en>Educational projects</span></h3>
+              <p><span data-es>Desarrollo de planos para pabellones escolares, cubiertas, áreas funcionales y documentación técnica institucional.</span><span data-en>Development of drawings for school pavilions, roofs, functional areas and institutional technical documentation.</span></p>
             </div>
           </article>
 
-          <article class="case-card reveal">
-            <div class="case-img">
-              <img src="images/project-roof-detail.jpg" alt="Detalle técnico" />
+          <article class="case reveal">
+            <div class="case-media">
+              <img src="images/project-roof-detail.jpg" alt="Detalle constructivo" />
             </div>
             <div class="case-content">
-              <div class="case-number">Case 05 · Detalle</div>
-              <h3>
-                <span data-es>Detalle constructivo</span>
-                <span data-en>Construction detail</span>
-              </h3>
-              <p>
-                <span data-es>Soluciones técnicas para conexiones, cubierta, columnas y ejecución sin improvisaciones.</span>
-                <span data-en>Technical solutions for connections, roofing, columns and execution without improvisation.</span>
-              </p>
+              <div class="case-label">Case 05 · Construction Detail</div>
+              <h3><span data-es>Detalle constructivo</span><span data-en>Construction detail</span></h3>
+              <p><span data-es>Soluciones técnicas para conexiones, cubierta, estructura y ejecución sin improvisaciones en obra.</span><span data-en>Technical solutions for connections, roofing, structure and execution without improvisation on site.</span></p>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
 
-          <article class="case-card reveal">
-            <div class="case-img">
-              <img src="images/profile-annelina.jpg" alt="Gestión de proyectos" />
-            </div>
-            <div class="case-content">
-              <div class="case-number">Case 06 · Gestión</div>
-              <h3>
-                <span data-es>Coordinación de proyecto</span>
-                <span data-en>Project coordination</span>
-              </h3>
-              <p>
-                <span data-es>Organización de información, cronogramas, proveedores y seguimiento técnico.</span>
-                <span data-en>Organization of information, timelines, vendors and technical follow-up.</span>
-              </p>
-            </div>
-          </article>
+    <section class="behind">
+      <div class="reveal">
+        <div class="section-kicker">
+          <span data-es>Detrás del proyecto</span>
+          <span data-en>Behind the project</span>
+        </div>
+
+        <h2 class="section-title">
+          <span data-es>Lo que no se ve también sostiene el proyecto.</span>
+          <span data-en>What is unseen also supports the project.</span>
+        </h2>
+
+        <p class="section-copy">
+          <span data-es>Un buen diseño no termina en una imagen bonita. Se sostiene en planos claros, detalles técnicos, coordinación y decisiones bien documentadas.</span>
+          <span data-en>Good design does not end with a beautiful image. It is supported by clear drawings, technical details, coordination and well-documented decisions.</span>
+        </p>
+      </div>
+
+      <div class="collage reveal">
+        <div class="collage-main">
+          <img src="images/project-house.jpg" alt="Render arquitectónico" />
+        </div>
+        <div class="collage-side">
+          <div class="collage-small">
+            <img src="images/project-structure.jpg" alt="Plano estructural" />
+          </div>
+          <div class="collage-small">
+            <img src="images/project-roof-detail.jpg" alt="Detalle arquitectónico" />
+          </div>
         </div>
       </div>
     </section>
@@ -1235,10 +1203,57 @@
           <h3><span data-es>Gestión de proyectos</span><span data-en>Project management</span></h3>
           <p><span data-es>Coordinación, cronogramas, proveedores, cotizaciones y seguimiento de obra.</span><span data-en>Coordination, timelines, vendors, estimates and project follow-up.</span></p>
         </div>
+
+        <div class="service reveal">
+          <span>05</span>
+          <h3><span data-es>Remodelaciones</span><span data-en>Remodeling</span></h3>
+          <p><span data-es>Lectura del espacio existente y propuestas para transformar con orden.</span><span data-en>Reading of existing space and proposals to transform with order.</span></p>
+        </div>
+
+        <div class="service reveal">
+          <span>06</span>
+          <h3><span data-es>Planos ejecutivos</span><span data-en>Executive drawings</span></h3>
+          <p><span data-es>Documentación preparada para revisión, coordinación y avance del proyecto.</span><span data-en>Documentation prepared for review, coordination and project progress.</span></p>
+        </div>
       </div>
     </section>
 
-    <section id="contacto" class="cta-section">
+    <section class="trust">
+      <div class="trust-inner">
+        <div class="reveal">
+          <div class="section-kicker">
+            <span data-es>Confianza</span>
+            <span data-en>Trust</span>
+          </div>
+
+          <h2 class="section-title">
+            <span data-es>Claridad, orden y criterio técnico.</span>
+            <span data-en>Clarity, order and technical judgment.</span>
+          </h2>
+        </div>
+
+        <div class="trust-list">
+          <div class="trust-item reveal">
+            <strong>Panamá</strong>
+            <span><span data-es>Arquitectura y desarrollo de proyectos.</span><span data-en>Architecture and project development.</span></span>
+          </div>
+          <div class="trust-item reveal">
+            <strong>AutoCAD + Revit</strong>
+            <span><span data-es>Documentación, modelado y dibujo técnico.</span><span data-en>Documentation, modeling and technical drafting.</span></span>
+          </div>
+          <div class="trust-item reveal">
+            <strong>A4 Panamá</strong>
+            <span><span data-es>Marca personal de arquitectura y papelería creativa.</span><span data-en>Personal architecture and creative stationery brand.</span></span>
+          </div>
+          <div class="trust-item reveal">
+            <strong>Gestión</strong>
+            <span><span data-es>Coordinación de obra, proveedores y cronogramas.</span><span data-en>Coordination of work, vendors and timelines.</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="cta">
       <div class="cta-box reveal">
         <h2>
           <span data-es>Tu proyecto necesita claridad antes de empezar.</span>
@@ -1269,10 +1284,14 @@
   </footer>
 
   <script>
-    function toggleLanguage() {
-      document.body.classList.toggle("english");
-      document.documentElement.lang =
-        document.body.classList.contains("english") ? "en" : "es";
+    function setLanguage(lang) {
+      if (lang === "en") {
+        document.body.classList.add("english");
+        document.documentElement.lang = "en";
+      } else {
+        document.body.classList.remove("english");
+        document.documentElement.lang = "es";
+      }
     }
 
     const revealElements = document.querySelectorAll(".reveal");
@@ -1285,7 +1304,7 @@
           }
         });
       },
-      { threshold: 0.14 }
+      { threshold: 0.12 }
     );
 
     revealElements.forEach(el => observer.observe(el));
